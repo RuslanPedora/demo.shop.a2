@@ -1,0 +1,24 @@
+<div id='sliderComponent'
+    (wheel)='scrollX($event)'
+    (mousedown)='mouseDown($event)'
+    (mouseup)='mouseUp($event)'    
+    (mousemove)='mouseMove($event)'>
+	<button (click)='yPlus()' id='yPlus' class='slideButton' draggable='false'>🠜</button>
+	<button (click)='yMinus()' id='yMinus' class='slideButton' draggable='false'>🠞</button>
+	<button (click)='xPlus()' id='xPlus' class='slideButton' draggable='false'>🠝</button>
+	<button (click)='xMinus()' id='xMinus' class='slideButton' draggable='false'>🠟</button>
+	<div *ngFor="let point of viewList" class='slideObject' draggable='false' 
+	                                    style.left='{{point.xView}}%' 
+	                                    style.top='{{point.yView}}%'
+	                            		style.width='{{point.imageWidth}}%'
+										style.height='{{point.imageWidth}}%'>		
+		<img src='{{imagePath}}{{point.item.mainImage}}' class='slideImage glClickableCursor' draggable='false' (click)=routeItem(point.item)>	
+		<div class='discountDiv' style.font-size='{{1.2*point.scale}}vw'>
+			-{{point.item.discount}}%
+		</div>
+		<div class='priceDiv' style.font-size='{{0.8*point.scale}}vw'>			
+			{{point.item.discountPrice.toFixed(2)}}$
+			<del>({{point.item.price.toFixed(2)}}$)</del>
+		</div>
+	</div>
+</div>

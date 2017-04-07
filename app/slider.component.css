@@ -1,0 +1,88 @@
+#sliderComponent {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: salmon;
+	position: relative;	
+	overflow: hidden;
+}
+.slideObject {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	user-select: none;	
+}
+.slideImage {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	user-select: none;
+	border-radius: 5%;
+	padding: 2%;
+	background-color: rgb( 230, 230, 230 );
+	border: 2px solid grey;
+}
+.slideImage:hover {
+	border: 2px solid black;
+}	
+.discountDiv {
+	top: 5%;
+	left: 5%;
+	position: absolute;
+	color: black;
+	font-weight: bold;
+	text-shadow: 1px 1px #FEF9E7;
+	background-color: cyan;
+	border-radius: 10%;
+}
+.priceDiv {
+	top: 80%;
+	left: 5%;
+	position: absolute;
+	color: black;
+	font-weight: bold;
+	text-shadow: 1px 1px #FEF9E7;
+	background-color: yellow;
+	border-radius: 10%;
+}
+.slideButton {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	user-select: none;
+	text-align: center;
+}
+#yPlus {	
+	width: 1.7%;
+	height: 5%;
+	top: 50%;
+	left: 0;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+#yMinus {
+	width: 1.7%;
+	height: 5%;
+	top: 50%;
+	right: 0;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px; 
+}
+#xPlus {	
+	width: 4%;
+	height: 3%;
+	top: 0;
+	left: 50%;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+#xMinus {
+	width: 4%;
+	height: 3%;
+	bottom: 0;
+	left: 50%;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}

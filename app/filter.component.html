@@ -1,0 +1,47 @@
+<div id='filterComponent' class='glLightBgColor'>
+	<div id='categorySwitcher' class='glMediumBgColor glSmallBrRadius glClickableCursor glGreenHover'
+	     *ngIf='!showAsCategoryTree'
+	     (click)='showAsCategoryTree=true;categoryId=-1'>
+		> {{categoryName}} <
+		
+	</div>	
+	<hr *ngIf='!showAsCategoryTree'>
+	<div id='categoryDiv' *ngIf='showAsCategoryTree'>
+		<category-tree [categoryList]='categoryTree'></category-tree>
+	</div>
+	<div id='propertiesDiv' *ngIf='!showAsCategoryTree'>
+		Selected properties:
+		<div *ngFor='let property of selectedProperties' class='propertySelectedDiv glMediumBgColor'>
+			{{property.itemProperty.name}}:
+			<div *ngFor='let value of property.itemPropertyList' 
+			     class='valueDiv glSmallBrRadius glClickableCursor glGreenHover'
+			     (click)='deleteToSelectedProperties(value)'>
+				{{value.value}}
+			</div>
+		</div>		
+		<table>
+			<td>Price: </td>
+			<td>
+				<input #lowPriceId  
+					   placeholder='low' type='number' min='0'
+				       [ngModel]='lowPrice' (input)='changeLowPrice(lowPriceId.value)'>
+			</td>
+			<td> - </td>	
+			<td>
+				<input #highPriceId 
+				       placeholder='high' type='number' min='0'
+				       [ngModel]='highPrice' (input)='changeHighPrice(highPriceId.value)'>
+			</td>
+		</table>		
+		<hr>
+		Available properties:
+		<div *ngFor='let property of availableProperties' class='propertyAvailableDiv glMediumBgColor'>
+			{{property.itemProperty.name}}:
+			<div *ngFor='let value of property.itemPropertyList' 
+			     class='valueDiv glSmallBrRadius glClickableCursor glGreenHover'
+			     (click)='addToSelectedProperties(value)'>
+			{{value.value}}
+			</div>
+		</div>	
+	</div>
+</div>

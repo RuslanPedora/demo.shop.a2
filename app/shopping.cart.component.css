@@ -1,0 +1,74 @@
+#shoppingCart {
+	width: 100%;	
+	padding: 0;
+	margin: 0;
+	color: black;
+	background-color: #8EDBD6;		
+	border: 1px solid black;
+	overflow-y: auto;
+}
+#shoppingCart .shoppingCell {
+	border: 1px solid rgb( 150, 150, 150 );	
+}
+#shoppingCart .bottomBorder {	
+	border-bottom: 1px dashed rgb( 150, 150, 150 );	
+}
+#shoppingCart table, #shoppingCart tr {
+	width: 100%;
+}
+#shoppingCart .tdRight {
+	text-align: right;
+}
+#shoppingCart .orderFont {
+	font-size: 1.5vw;
+}
+.orderButtonWrapper {
+	width: 50%;	
+	padding-top: 50%;
+	position: relative;
+}
+.shiftedOrderButtonWrapper {
+	margin-left: 50%;
+}
+.orderInputWrapper {
+	width: 100%;	
+	padding-top: 50%;	
+	position: relative;
+}
+.trInvisible {
+	display: none;
+}
+#quantityInput {	
+	width: 90%;
+	height: 100%;
+	margin-left: 5%;	
+	top: 0;
+	left: 0;
+	text-align: right;
+	position: absolute;
+	font-size: 2vw;
+}
+.orderImage {
+	max-width: 100%;
+	max-height: 100%;
+	padding: 10px;	
+	float: left;
+}
+.orderImage:hover {
+	border: 1px solid black;
+}	
+.orderRowButton {	
+	width: 100%;
+	height: 100%;		
+	top: 0;
+	position: absolute;
+	font-size: 2vw;
+}
+.orderNavButton {
+	width: 15vw;
+	height: 2vw;
+	margin: 1vw;
+}
+.totalTd {
+	font-weight: bold; 
+}

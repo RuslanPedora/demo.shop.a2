@@ -1,0 +1,82 @@
+#mainBlock {
+	width: 100%;	
+	height: 89%;	
+	padding: 0;
+	margin: 0;
+	background-color: rgb( 255, 255, 255 );
+}
+#header {
+	height: 1.2cm;
+	padding: 0;
+	margin: 0;
+	border: 1px solid black;	
+	color: black;
+	background-color: rgb( 230, 230, 230 );
+}
+.shoppingCartLink {
+	float: right;
+}
+#content{
+	width: 100%;
+	height: 100%;
+}
+#leftBlock {
+	width: 70%;
+}
+#outlet {	
+	width: 100%;
+	height: 100%;		
+	float: left;
+	padding: 0;
+	margin: 0;
+	word-break: break-all;
+	overflow: auto;
+	color: white;
+	background-color: rgb( 250, 255, 250 );
+}
+#rightBlock {	
+	background-color: rgb( 180, 100, 100);
+	overflow: auto;
+	word-break: break-all;
+	padding: 0;
+	margin: 0;
+}
+.leftFloatDiv {
+	float: left;
+}
+.maxHeightDiv {
+	height: 100%;
+}
+.markerDiv {
+	border: 10px solid green;	
+}
+:host /deep/ .glClickableCursor {
+	cursor: pointer;
+}
+:host /deep/ .glSmallBrRadius {
+	border-radius: 0.1cm;
+}
+:host /deep/ .glMediumBrRadius {
+	border-radius: 0.5cm;
+}
+:host /deep/ .glBigBrRadius {
+	border-radius: 1cm;
+}
+:host /deep/ .glRightFloat{
+	float: right;
+}
+:host /deep/ .glLeftFloat{
+	float: left;
+}
+:host /deep/ .glLightBgColor{
+	background-color: #FEF9E7;
+}
+:host /deep/ .glMediumBgColor{
+	background-color: #FAE5D3;
+}
+:host /deep/ .glDarkBgColor{
+	background-color: #E59866;
+}
+:host /deep/ .glGreenHover:hover {
+	background-color: #8EDBD6;
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<head>
+	<title>Trial shop</title>
+	<link rel='stylesheet' href='styles.css' >    
+    <base href="/">
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import( 'app/main.js' ).catch( function( err ) { console.error( err ); } );
+    </script>
+</head>
+<body>
+<div id='screenDiv'>
+	<div id='topic'>
+   	   Trial shop
+    </div>
+    <demo-shop>Loadding trial shop...</demo-shop>
+</div>        
+</body>

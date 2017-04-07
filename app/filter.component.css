@@ -1,0 +1,40 @@
+#filterComponent {
+	width: 5cm;
+	height: 100%;
+	float: left;
+	padding: 0;
+	margin: 0;		
+	overflow: visible;
+}
+#categoryDiv {		
+}
+#propertiesDiv {
+}
+.propertySelectedDiv {
+	padding: 1% 1% 1% 5%;
+	font-size: 1.2vw;
+}
+.propertyAvailableDiv {
+	padding: 0 1% 0 5%;
+	font-size: 1.2vw;
+}
+.valueDiv {
+	padding: 1% 1% 1% 10%;
+	font-size: 1vw;
+}
+.valueDiv:hover {
+
+}
+#categorySwitcher {
+	padding: 1% 1% 1% 1%;
+	text-align: center;
+	font-size: 1.3vw;
+}
+#categorySwitcher:hover {
+}
+#filterComponent table {
+	margin: 1vh;	
+}
+#propertiesDiv input {
+	width: 100%;
+}

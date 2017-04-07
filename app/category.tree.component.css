@@ -1,0 +1,28 @@
+.categoryItem {
+	width: 100%;
+	position: relative;
+	z-index: 50;
+}
+.categoryItem:hover {
+}
+.categorySubmenu {
+	width: 100%;
+	top: 0%;
+	left: 100%;
+	position: absolute;
+	display: none;
+}
+.categoryItem:hover>.categorySubmenu {
+	display: initial;
+}
+.categoryLink {
+	padding: 3%;
+	font-size: 1vw;
+}
+.subMenuMarker {
+	display: inline;
+	float: right;
+}
+.categoryUnClickable {
+	cursor: zoom-in;
+}

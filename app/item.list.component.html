@@ -1,0 +1,116 @@
+<div id='itemList'>
+	Query string: {{queryString}}
+	<hr>
+	{{itemList.length}}
+	<hr>
+	<div id='panel'>
+		<div class='option glClickableCursor' 
+			 [ngClass]="{'selected':sortedByNameAsc}"
+		     (click)='sortByNameAsc()'>Name ⇧
+		</div>
+		<div class='option glClickableCursor' 
+		     [ngClass]="{'selected':sortedByNameDes}"
+		     (click)='sortByNameDes()'>Name ⇩
+		</div>
+		<div class='option glClickableCursor' 
+			 [ngClass]="{'selected':sortedByPriceAsc}"
+		     (click)='sortByPriceAsc()'>Price ⇧
+		</div>
+		<div class='option glClickableCursor' 
+		     [ngClass]="{'selected':sortedByPriceDes}"
+		     (click)='sortByPriceDes()'>Price ⇩
+		</div>
+		<div class='option rightFloat glClickableCursor' 
+			 [ngClass]="{'selected':!shownAsList}"
+		     (click)='showAsList(false)'><img src='app/images/table_icon.jpg' class='iconImage'>
+	    </div>
+		<div class='option rightFloat glClickableCursor' 
+		     [ngClass]="{'selected':shownAsList}"
+		     (click)='showAsList(true)'><img src='app/images/list_icon.jpg' class='iconImage'>
+		</div>
+		<div class='option rightFloat glClickableCursor'>
+			<label>Item on page: </label>
+			<select value=25 #itemPrePageSelect (change)=changeItemsPerPage($event.target.value)>
+				<option value=25>25</option>
+				<option value=50>50</option>
+				<option value=100>100</option>
+				<option value=0>all</option>
+			</select>
+		</div>
+	</div>
+	<div class='pages' *ngIf='pages.length>0'>
+		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
+		     (click)='setCurrentPage(0)'>
+		     &laquo;
+		</div>
+		<div  *ngFor='let page of pages'		    
+		    [ngClass]="{'pageNumber': true, 'glClickableCursor': true, 'glSmallBrRadius': true, 'selected': page==currentPage, 'unSelectedPage': page!=currentPage}"
+		    (click)='setCurrentPage(page)'>
+			{{page+1}} 
+		</div>
+		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
+		     (click)='setCurrentPage(pages.length-1)'>
+		     &raquo;
+		</div>		
+	</div>
+	<div id='itemList' *ngIf='shownAsList'>
+		<div *ngFor="let item of itemList| slice:firstElemntInc:lastElemntExc" class='itemLine'>
+			<div class='itemLineWrapper'>
+				<div class='itemLineImageDiv'>	
+					<img src='{{imagePath}}{{item.mainImage}}' class='lineImage glClickableCursor' (click)=showItemDetail(item)>
+					<img src='{{imagePath}}{{item.mainImage}}' class='lineImageBig glClickableCursor' (click)=showItemDetail(item)>
+				</div>	
+				<div class='itemLineNameDiv'>	
+					<div class='itemLineNameWrapper'>
+						{{item.name}}							
+					</div>
+				</div>
+				<div class='itemLinePriceDiv'>
+					<div class='itemLinePriceWrapper'>
+						{{item.discountPrice.toFixed(2)}}$
+						<ng-container *ngIf='item.discount>0'>
+							<del>({{item.price.toFixed(2)}}$)</del>
+						</ng-container>
+					</div>
+					<div class='itemLineButtonWrapper'>						
+						<button (click)=addItemToShoppingCart(item) class='glClickableCursor'>buy</button>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='itemTable' *ngIf='!shownAsList'>
+		<div *ngFor="let item of itemList| slice:firstElemntInc:lastElemntExc" class='itemTileWrapper'>
+			<div class='itemTile'>
+				<div class='tileImageBlock'>
+					<img src='{{imagePath}}{{item.mainImage}}' class='blockImage glClickableCursor'(click)=showItemDetail(item)>
+				</div>	
+				<div class='tileNameBlock'>
+					{{item.name}}
+				</div>
+				<div class='tileBottomBlock'>
+					{{item.discountPrice.toFixed(2)}}$
+					<ng-container *ngIf='item.discount>0'>
+						<del>({{item.price.toFixed(2)}}$)</del>
+					</ng-container>
+					<button (click)=addItemToShoppingCart(item) class='rightFloat tileButton glClickableCursor'>buy</button>				
+				</div>	
+			</div>
+		</div>
+	</div>	
+	<div class='pages' *ngIf='pages.length>0'>
+		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
+		     (click)='setCurrentPage(0)'>
+		     &laquo;
+		</div>
+		<div  *ngFor='let page of pages'		    
+		    [ngClass]="{'pageNumber': true, 'glClickableCursor': true, 'glSmallBrRadius': true, 'selected': page==currentPage, 'unSelectedPage': page!=currentPage}"
+		    (click)='setCurrentPage(page)'>
+			{{page+1}} 
+		</div>
+		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
+		     (click)='setCurrentPage(pages.length-1)'>
+		     &raquo;
+		</div>		
+	</div>	
+</div>

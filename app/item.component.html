@@ -1,0 +1,40 @@
+<div id='item'>	
+	<div id='imageContainer'>
+		<div id='imageDiv'>
+			<img id='mainImage' src='{{imagePath}}{{mainImage}}'>	
+		</div>
+		<div id='imageList'>
+				<img *ngFor='let imageSrc of imageList' src='{{imagePath}}{{imageSrc}}' class='smallImage' (click)='changeImage(imageSrc)'>
+		</div>
+	</div>
+	<div id='itemData'>
+		<div id='buyBlock'>
+			<div id='itemName'>{{currentItem?.name}}</div>
+			<div id='itemPrice'>				
+				{{currentItem?.discountPrice.toFixed(2)}}$
+				<ng-container *ngIf='currentItem?.discount>0'>
+					<del>({{currentItem?.price.toFixed(2)}}$)</del>
+					<br>
+					(-{{currentItem?.discount}}%)
+				</ng-container>
+			</div>
+			<button id='buyButton' (click)=addItemToShoppingCart()>buy</button>	
+		</div>
+		<br>
+		<button class='navButton' (click)='goBack()'>back</button>
+		<button class='navButton' (click)='goToItemList()'>Go to item list</button>
+		<hr>
+		<div id='itemCategory' class='glClickableCursor'
+		     (click)='goToCategory()'>
+			Category: {{currentItem?.category}}
+		</div>
+		<div id='itemPropertyList' *ngIf='propertyList.length>0'>			
+			<table>
+				<tr *ngFor='let property of propertyList'>
+					<td style='width: 30%'>{{property.name}}:</td>					
+					<td style='width: 70%'>{{property.value}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

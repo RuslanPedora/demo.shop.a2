@@ -1,0 +1,51 @@
+<div id='shoppingCart' class='glSmallBrRadius'>
+	<table>
+		<tr>
+			<th style='width:15%' class='shoppingCell glSmallBrRadius'>Item</th>
+			<th style='width:35%' class='shoppingCell glSmallBrRadius'></th>
+			<th style='width:7%' class='shoppingCell glSmallBrRadius'></th>
+			<th style='width:7%' class='shoppingCell glSmallBrRadius'>Qty.</th>
+			<th style='width:7%' class='shoppingCell glSmallBrRadius'></th>
+			<th style='width:13%' class='shoppingCell glSmallBrRadius'>Price</th>
+			<th style='width:16%' class='shoppingCell glSmallBrRadius'>Total</th>
+			
+		</tr>
+		<tr *ngFor="let orderRow of orderRows">
+			<td class='bottomBorder glMediumBrRadius'>
+				<img src='{{imagePath}}{{orderRow.item.mainImage}}' class='orderImage glMediumBrRadius glClickableCursor' (click)='showItemDetail(orderRow.item)'>		
+			</td>
+			<td class='orderFont bottomBorder'>{{orderRow.item.name}}</td>
+			<td class='bottomBorder'>
+				<div class='orderButtonWrapper shiftedOrderButtonWrapper bottomBorder'>
+					<button class='orderRowButton glSmallBrRadius glClickableCursor' (click)=deleteItem(orderRow.item)>-</button>
+				</div>
+			</td>
+			<td class='tdRight bottomBorder'>
+				<div class='orderInputWrapper'>
+					<input id='quantityInput' class='glSmallBrRadius' #quantityInput [ngModel]='orderRow.quantity' (input)=addItem(orderRow.item,quantityInput.value) />
+				</div>
+			</td>
+			<td class='bottomBorder bottomBorder'>
+				<div class='orderButtonWrapper'>
+					<button class='orderRowButton glSmallBrRadius glClickableCursor' (click)=addItem(orderRow.item)>+</button>		
+				</div>
+			</td>
+			<td class='tdRight orderFont bottomBorder'>
+				{{orderRow.item.discountPrice.toFixed(2)}}$
+			</td>
+			<td class='tdRight orderFont bottomBorder'>{{orderRow.total.toFixed(2)}}$</td>
+		</tr>		
+		<tr>
+			<td colspan=3>
+				<button class='orderNavButton orderFont glSmallBrRadius glClickableCursor' (click)='goToItemList()'>Go to item list</button>
+				<button class='orderNavButton orderFont glSmallBrRadius glClickableCursor' (click)='goBack()'>Go back</button>
+			</td>
+			<td colspan=3>
+				<button class='orderNavButton orderFont glSmallBrRadius glClickableCursor' (click)='placeOrder()'>Place order</button>
+			</td>
+			<td class='tdRight orderFont shoppingCell totalTd glSmallBrRadius'>
+				{{total.toFixed(2)}}$
+			</td>
+		</tr>
+	</table>	
+</div>

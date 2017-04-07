@@ -1,0 +1,18 @@
+<div id='mainBlock'>
+	<div id='header'>	
+		Search: <input type='text' [(ngModel)]='nameMask'>
+		<button (click)='searchByName()'>search...</button>		
+		<a routerLink='/shopping-cart' class='shoppingCartLink'><img src='app/images/shopping-cart.jpg' width=30>{{eventValue.toFixed(2)}}</a>	
+	</div>
+	<div id='content'>
+		<filter (filterValueChangeEvent)='onFilterChange($event)'></filter>
+		<div id='data' class='maxHeightDiv'>
+			<div id='leftBlock' class='leftFloatDiv maxHeightDiv'>
+				<div id='outlet'><router-outlet></router-outlet></div>
+			</div>
+			<div id='rightBlock' class='maxHeightDiv'>
+				this is right side block
+			</div>	
+		</div>
+	</div>
+</div>

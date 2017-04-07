@@ -1,0 +1,12 @@
+<div *ngFor='let node of categoryList' class='categoryItem glGreenHover glClickableCursor glMediumBgColor glSmallBrRadius'>
+		<div class='categoryLink' 
+		     [ngClass]="{'categoryUnClickable': node.subMenu, 'categoryClickable': !node.subMenu }"
+		     (click)=chooseCategory(node)
+		     draggable='false'>
+			{{node.name}}
+			<div class='subMenuMarker' *ngIf='node.subMenu'>+</div>
+		</div>	
+		<div class='categorySubmenu glMediumBgColor glSmallBrRadius'>
+			<category-tree [categoryList]='node.subNodes'></category-tree>		
+		</div>
+</div>
