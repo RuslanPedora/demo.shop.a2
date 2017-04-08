@@ -43,15 +43,15 @@ export class ItemComponent implements OnInit {
 		);		
 	}
 	//-----------------------------------------------------------------------------
-	changeImage( newImage: string ) {
+	changeImage( newImage: string ): void {
 		this.mainImage = newImage;
 	}
 	//-----------------------------------------------------------------------------
-	goBack() {
+	goBack(): void {
 		this.location.back();
 	}
 	//-----------------------------------------------------------------------------
-	goToItemList() {
+	goToItemList(): void {
 		this.dataService.goToItemList();
 	}
 	//-----------------------------------------------------------------------------
@@ -59,7 +59,7 @@ export class ItemComponent implements OnInit {
 		this.dataService.addItemToShoppingCart( this.currentItem );
 	}
 	//-----------------------------------------------------------------------------
-	getItem( itemId: number ) {
+	getItem( itemId: number ): void {
 		this.dataService
         	.getItemList( JSON.stringify( { _ITid: itemId } ) )
         	.then( 
@@ -75,7 +75,7 @@ export class ItemComponent implements OnInit {
 
 	}
 	//-----------------------------------------------------------------------------
-	getImageList() {
+	getImageList(): void {
 		this.dataService
         	.getImageList( JSON.stringify( { id: this.currentItem.id } ) )
         	.then( 
@@ -83,7 +83,7 @@ export class ItemComponent implements OnInit {
         	);		
 	}
 	//-----------------------------------------------------------------------------
-	getItemPropertyList() {
+	getItemPropertyList(): void {
 		this.dataService
         	.getItemPropertiesList( JSON.stringify( { id: this.currentItem.id } ) )
         	.then( 

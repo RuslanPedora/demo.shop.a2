@@ -77,7 +77,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 			this.xMinus();
 	}
 	//-----------------------------------------------------------------------------
-	sortOrder( a: Point, b: Point ) {
+	sortOrder( a: Point, b: Point ): number {
 	 return ( a.z < b.z ? -1 : 1 );
 	} 
 	//-----------------------------------------------------------------------------
@@ -85,7 +85,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 		return 5 + Math.round( this.imageWidth * ( 1 + z / this.radius) );
 	}
 	//-----------------------------------------------------------------------------
-	viewListInit() {
+	viewListInit(): void {
 		let x: number;
 		let y: number;
 		let z: number;
@@ -234,7 +234,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 		return ( x * Math.sin( angle ) + y * Math.cos( angle ) );
 	}
 	//-----------------------------------------------------------------------------
-	routeItem( item: Item ) {
+	routeItem( item: Item ): void {
 		let paramString: string = ( '{"' + this.dataService.getItemKeyPrefix() +
 			                               this.dataService.getItemTablePrefix() + 
 			                               'id":"' + item.id + '"}' );

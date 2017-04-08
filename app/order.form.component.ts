@@ -29,6 +29,7 @@ export class OrderFormComponent implements OnInit {
 	private paymnetType: string = 'Cash';
 	private orderNumber: number  = 0;
 	private displayMessage: boolean = false;
+	private comment: string = '';
 	private mask = [ '(' , ')' ];
 	//[textMask]='{mask: mask}'
 	//-----------------------------------------------------------------------------
@@ -42,7 +43,7 @@ export class OrderFormComponent implements OnInit {
 		this.getCarriers();
 	}
 	//-----------------------------------------------------------------------------
-	getCarriers() {
+	getCarriers(): void {
 		this.dataService
         	.getCarriers()
         	.then( 
@@ -76,6 +77,7 @@ export class OrderFormComponent implements OnInit {
 		order[ 'paymnetType' ]       = this.paymnetType;
 		order[ 'carrier' ]           = this.selectedCarrier;
 		order[ 'orderRows' ]         = this.orderRows;
+		order[ 'comment' ]           = this.comment;
 
 		this.dataService.postOrder( order ).then( 
 			result => {

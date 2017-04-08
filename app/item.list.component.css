@@ -20,6 +20,9 @@
 	display: inline-block;
 	font-weight: bold;
 }
+.option:hover {
+	border: 1px solid rgb( 100, 100, 100 );	
+}
 .leftFloat {
 	float: left;
 }
@@ -147,11 +150,16 @@
 }
 .blockImage {
 	max-width: 100%;	
-	max-height: 100%;
+	max-height: 100%;	
+	opacity: 0.97;
+}
+.blockImage:hover {
+	opacity: 1;
 }
 .tileImageBlock {
 	height: 70%;
 	padding: 2%;
+	perspective: 20px;
 }
 .tileNameBlock{
 	height: 15%;

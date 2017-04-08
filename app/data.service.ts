@@ -50,7 +50,7 @@ export class DataService {
 		this.categoryEventSource       = this.categoryEventEmitter.asObservable();
     }
     //----------------------------------------------------------------------------
-    restoreFromLocalStorage() {
+    restoreFromLocalStorage(): void {
     	let restoredValue: any;
     	restoredValue = this.localStorageService.get( 'demoShopShoppingCart' );
     	try {
@@ -61,7 +61,7 @@ export class DataService {
     	this.emitShoppingCartEvent( '' );
     }
     //----------------------------------------------------------------------------
-    getImagesPath() {
+    getImagesPath(): string {
     	return this.imagePath;
     }
     //----------------------------------------------------------------------------
@@ -76,7 +76,7 @@ export class DataService {
     	return result;
     }
     //-----------------------------------------------------------------------------
-    getShoppingCartRows() {
+    getShoppingCartRows(): OrderRow[] {
     	return this.orderRows;
     }
     //-----------------------------------------------------------------------------
@@ -140,11 +140,11 @@ export class DataService {
     	return this.itemTablePrefix;
     }
     //-----------------------------------------------------------------------------
-    emitCategorySelectEvent( categoryNode: CategoryNode) {
+    emitCategorySelectEvent( categoryNode: CategoryNode): void {
     	this.categoryEventEmitter.next( categoryNode );
     }
     //-----------------------------------------------------------------------------
-    emitShoppingCartEvent( eventName: string ) {
+    emitShoppingCartEvent( eventName: string ): void {
     	this.shoppingCartEventEmitter.next( eventName );
     }
     //-----------------------------------------------------------------------------

@@ -23,14 +23,22 @@
 	padding: 1%;
 }
 .field input {
+	width: 50%;
 	float: right;
-	
+}
+.field textarea{
+	width: 50%;
+	float: right;
 }
 #carriers {
 	border: 1px solid black;
 }
 #buttons button {
 	font-size: 1vw;
+}
+#commentInput {
+	height: 3cm;
+	overflow-y: scroll;
 }
 #message {
 	top: 20%;

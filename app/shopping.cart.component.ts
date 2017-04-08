@@ -31,14 +31,14 @@ export class ShoppingCartComponent implements OnInit {
 		this.imagePath = this.dataService.getImagesPath();
 	}
 	//-----------------------------------------------------------------------------
-	showItemDetail( item: Item ) {
+	showItemDetail( item: Item ): void {
 		let paramString: string = ( '{"' + this.dataService.getItemKeyPrefix() +
 										   this.dataService.getItemTablePrefix() +
 		                                    'id":"' + item.id + '"}' );
 		this.router.navigate( [ '/item' ], { queryParams: JSON.parse( paramString ) } );
 	}
 	//-----------------------------------------------------------------------------
-	addItem( item: Item, fixedQuiantity?: number ) {
+	addItem( item: Item, fixedQuiantity?: number ): void {
 		if( fixedQuiantity == undefined )
 			this.dataService.addItemToShoppingCart( item );
 		else	
@@ -47,21 +47,21 @@ export class ShoppingCartComponent implements OnInit {
 		this.total     = this.dataService.getShoppingCartTotal();
 	}
 	//-----------------------------------------------------------------------------
-	deleteItem( item: Item ) {
+	deleteItem( item: Item ): void {
 		this.dataService.deleteItemToShoppingCart( item );
 		this.orderRows = this.dataService.getShoppingCartRows();
 		this.total     = this.dataService.getShoppingCartTotal();
 	}
 	//-----------------------------------------------------------------------------
-	goToItemList() {
+	goToItemList(): void {
 		this.dataService.goToItemList();
 	}
 	//-----------------------------------------------------------------------------
-	goBack() {
+	goBack(): void {
 		this.location.back();
 	}
 	//-----------------------------------------------------------------------------
-	placeOrder() {
+	placeOrder(): void {
 		this.router.navigate( [ '/order-form' ] );
 	}	
 }

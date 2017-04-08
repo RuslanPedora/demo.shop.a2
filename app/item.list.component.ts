@@ -71,7 +71,7 @@ export class ItemListComponent implements OnInit {
 		);
 	}
     //----------------------------------------------------------------------------
-    restoreFromLocalStorage() {
+    restoreFromLocalStorage(): void {
     	let restoredValue: any;
     	restoredValue = this.localStorageService.get( 'demoShopShownAsList' );
     	if( restoredValue != undefined ) 
@@ -145,7 +145,7 @@ export class ItemListComponent implements OnInit {
 		this.localStorageService.set( 'demoShopShownAsList', value );
 	}
 	//-----------------------------------------------------------------------------
-	showItemDetail( item: Item ) {
+	showItemDetail( item: Item ): void {
 		let paramString: string = ( '{"' + this.dataService.getItemKeyPrefix() +
 			                               this.dataService.getItemTablePrefix() +
 		                                   'id":"' + item.id + '"}' );

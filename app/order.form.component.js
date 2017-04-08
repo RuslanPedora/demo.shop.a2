@@ -29,6 +29,7 @@ var OrderFormComponent = (function () {
         this.paymnetType = 'Cash';
         this.orderNumber = 0;
         this.displayMessage = false;
+        this.comment = '';
         this.mask = ['(', ')'];
     }
     //-----------------------------------------------------------------------------
@@ -72,6 +73,7 @@ var OrderFormComponent = (function () {
         order['paymnetType'] = this.paymnetType;
         order['carrier'] = this.selectedCarrier;
         order['orderRows'] = this.orderRows;
+        order['comment'] = this.comment;
         this.dataService.postOrder(order).then(function (result) {
             _this.orderNumber = result['orderNumber'];
             _this.displayMessage = true;

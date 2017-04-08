@@ -68,7 +68,7 @@ export class FilterComponent implements OnInit, OnDestroy {
 		}
 	}
 	//-----------------------------------------------------------------------------
-	getCategoryHierarchy() {
+	getCategoryHierarchy(): void {
 		this.dataService
         	.getCategoryHierarchy()
         	.then( 
@@ -149,7 +149,7 @@ export class FilterComponent implements OnInit, OnDestroy {
 			this.router.navigate( [ '/item-list' ], { queryParams: filterObject } );
 	}
 	//-----------------------------------------------------------------------------
-	refreshAvailableProperties() {
+	refreshAvailableProperties(): void {
 		let filterObject: any = {};
 		let valueObject: any = {};
 		filterObject[ this.dataService.getItemTablePrefix() +'categoryId' ] = this.categoryId;		

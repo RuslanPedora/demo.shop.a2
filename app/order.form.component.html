@@ -3,14 +3,11 @@
 		<form id='orderForm' (ngSubmit)='postOrder()'>
 			<div class='field'>
 				Personal data:
-			</div>
-		
+			</div>		
 			<div class='field'>
 				First name:<sup>*</sup>
 				<input [(ngModel)]='firstName' placeholder='First name'  required class='font' name='fisrtNameElement'>
 			</div>	
-		
-
 			<div class='field'>	
 				Second name:
 				<input [(ngModel)]='secondName' placeholder='Second name' class='font' name='secondNameElement'>
@@ -23,6 +20,11 @@
 				Phone number:<sup>*</sup>
 				<input [(ngModel)]='phoneNumber' placeholder='phone number' required class='font'  name='phoneNameElement'>
 				<br>
+			</div>	
+			<div class='field'>	
+				Comment:
+				<textarea id='commentInput' [(ngModel)]='comment' placeholder='any comments...' class='font' name='commentElement'>
+				</textarea>
 			</div>	
 		</form>			
 	</div>

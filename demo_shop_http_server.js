@@ -44,7 +44,7 @@ server = appExpress.listen( 8081, function() {
 });
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
-    response.sendFile( path.join( __dirname + "/" +  sourcePathName + '/index.html' ) );        
+    response.sendFile( path.join( __dirname + "/" +  sourcePathName + '/index.html' ) );
     logRequest( request.url, 'index.html loaded' );
 }
 //-----------------------------------------------------------------------------
@@ -61,8 +61,13 @@ function orderResponse( request, response ) {
 
     request.on( 'end', function() {
         var passedObject = {};
-        
-        passedObject = JSON.parse( passedObjectAsString );
+        try {
+          passedObject = JSON.parse( passedObjectAsString );
+        }
+        catch ( error )  {
+          logRequest( error );
+          serverSideError( request, response )
+        }
 
         querySQL = '\
           INSERT INTO orders (orderDate,user) VALUES ( now(), \'' + passedObject.email + '\' ); ';  
@@ -167,6 +172,10 @@ function sendOrderEmail( orderNumber, orderData ) {
     messageHtml += '<br>Payment method: ' + orderData.paymnetType; 
     messageHtml += '<br>'
 
+    messageHtml += '<br>Additional information: ' + orderData.comment; 
+    messageHtml += '<br>'
+
+
     messageHtml += '<br><br><p>Kind regards.<br><br>demo.shop.a2 team.</p>';
 
     mailOptions.text = messageText;
@@ -176,7 +185,7 @@ function sendOrderEmail( orderNumber, orderData ) {
         if ( error ) {
             return console.log(error);
         }
-        console.log('Message %s sent: %s', info.messageId, info.response);
+        logRequest('Message %s sent: %s', info.messageId, info.response);
     });
 
 
@@ -247,34 +256,41 @@ function availablePropertiesResponse( request, response ) {
         ORDER BY properties.name, value';
     
     conditionString = '';
-    
-    querySQL = querySQL.replace( new RegExp( 'conditionInjection', 'g' ), '' );
-    categoryConditionInjection = constructSQLCondition( decodeQuotes( queryInputString ), ITEM_TABLE_PREFIX );
+    try {
+      querySQL = querySQL.replace( new RegExp( 'conditionInjection', 'g' ), '' );
+      categoryConditionInjection = constructSQLCondition( decodeQuotes( queryInputString ), ITEM_TABLE_PREFIX );
 
-    propertyConditionInjection = '';
-    currentConditionInjection = ''
+      propertyConditionInjection = '';
+      currentConditionInjection = ''
 
-    queryObject = JSON.parse( decodeQuotes( queryInputString ) );
-    for( let propertryObject in queryObject ) {
-      if(  propertryObject.indexOf( 'Container' ) >= 0 ) {
-        propertyNumber++;
-        currentConditionInjection = constructSQLCondition( JSON.stringify( queryObject[ propertryObject ] ) );
-        if( propertyConditionInjection != '' )
-          currentConditionInjection = currentConditionInjection.replace( 'WHERE', 'OR' );
-        else
-          currentConditionInjection = currentConditionInjection.replace( 'WHERE', '' );
-        propertyConditionInjection += currentConditionInjection;
+      queryObject = JSON.parse( decodeQuotes( queryInputString ) );
+      for( let propertryObject in queryObject ) {
+        if(  propertryObject.indexOf( 'Container' ) >= 0 ) {
+          propertyNumber++;
+          currentConditionInjection = constructSQLCondition( JSON.stringify( queryObject[ propertryObject ] ) );
+          if( propertyConditionInjection != '' )
+            currentConditionInjection = currentConditionInjection.replace( 'WHERE', 'OR' );
+          else
+            currentConditionInjection = currentConditionInjection.replace( 'WHERE', '' );
+          propertyConditionInjection += currentConditionInjection;
+        }
       }
+
+      selectedCondition = ' WHERE false ';
+      if( propertyConditionInjection != '' ) {
+        propertyConditionInjection = ' WHERE ( ' + propertyConditionInjection + ' ) ';
+        selectedCondition = propertyConditionInjection;
+      }
+
+      selectedNotCondition = selectedCondition.replace( new RegExp( 'value =', 'g' ), 'value <>' );
+      selectedNotCondition = selectedNotCondition.replace( new RegExp( 'OR', 'g' ), 'AND' );
+
+    }
+    catch ( error )  {
+      logRequest( error );
+      serverSideError( request, response )
     }
 
-    selectedCondition = ' WHERE false ';
-    if( propertyConditionInjection != '' ) {
-      propertyConditionInjection = ' WHERE ( ' + propertyConditionInjection + ' ) ';
-      selectedCondition = propertyConditionInjection;
-    }
-
-    selectedNotCondition = selectedCondition.replace( new RegExp( 'value =', 'g' ), 'value <>' );
-    selectedNotCondition = selectedNotCondition.replace( new RegExp( 'OR', 'g' ), 'AND' );
 
     querySQL = querySQL.replace( new RegExp( 'categoryConditionInjection', 'g' ), categoryConditionInjection );
     querySQL = querySQL.replace( new RegExp( 'propertyConditionInjection', 'g' ), propertyConditionInjection );
@@ -292,6 +308,7 @@ function makeResponseOnDBData( querySQL, request, response ) {
                         if (error) { 
                           logRequest( 'db connetion failed: ' + querySQL );
                           logRequest( 'Error: ' + error );
+                          serverSideError( request, response )
                           return;
                         }
                         response.writeHead( 200, {'Content-Type': 'text/plain' } );
@@ -301,6 +318,11 @@ function makeResponseOnDBData( querySQL, request, response ) {
                     });
     connection.end();
     logRequest( request.url, 'connection is closed' );
+}
+//-----------------------------------------------------------------------------
+function serverSideError( request, response ) {
+  response.writeHead( 404, {'Content-Type': 'text/plain' } );
+  response.sendFile( path.join( __dirname + '/404.html' ) );
 }
 //-----------------------------------------------------------------------------
 function discountItemsResponse ( request, response ) {
@@ -384,8 +406,13 @@ function itemPropertiesResponse( request, response ) {
         ON itemProperties.propertyId = properties.id\
         WHERE items.id = conditionInjection\
         ORDER BY properties.viewPriority DESC, properties.name';
-
-    conditionString = JSON.parse( decodeQuotes( queryInputString ) ).id;
+    try {
+      conditionString = JSON.parse( decodeQuotes( queryInputString ) ).id;
+    }
+    catch ( error )  {
+      logRequest( error );
+      serverSideError( request, response )
+    }    
     logRequest( request.url, 'condition string: ' + conditionString);    
     querySQL = querySQL.replace( new RegExp( 'conditionInjection', 'g' ), conditionString );
 
@@ -410,8 +437,14 @@ function itemImagesResponse( request, response ) {
       SELECT mainImage imageSrc FROM items WHERE id = conditionInjection\
       UNION ALL\
       SELECT imageSrc FROM images WHERE itemId = conditionInjection';
+    try {
+      conditionString = JSON.parse( decodeQuotes( queryInputString ) ).id;
+    }
+    catch ( error )  {
+      logRequest( error );
+      serverSideError( request, response )
+    }
 
-    conditionString = JSON.parse( decodeQuotes( queryInputString ) ).id;
     logRequest( request.url, 'condition string: ' + conditionString);    
     querySQL = querySQL.replace( new RegExp( 'conditionInjection', 'g' ), conditionString );
 
@@ -470,38 +503,46 @@ function itemsResponse( request, response ) {
         ON items.categoryId = categories.id) as itemSelection\
       conditionInjection';
 
-    conditionInjection = constructSQLCondition( decodeQuotes( queryInputString ), ITEM_TABLE_PREFIX );
-    logRequest( request.url, 'condition string: ' + conditionInjection );    
+    try {
 
-    if( queryInputString != '' )
-      queryObject = JSON.parse( decodeQuotes( queryInputString ) );
-    propertyCondition = '';
-    currentCondition = '';
-    numberOrder = '';
-    for( var property in queryObject ) {
-      if( property.indexOf( "propertyId_" ) >= 0 ) {
-          numberOrder = property.slice( property.lastIndexOf( '_' ) );
-          currentCondition = constructSQLCondition( JSON.stringify( { propertyId: queryObject[ property ], 
-                                                                      value: queryObject[ 'value' + numberOrder ] } ) );
-          if( propertyCondition != '' ) {
-            currentCondition = currentCondition.replace( 'WHERE', 'OR' );
-          }
-          propertyCondition += currentCondition;
-          propertyCount++;
+      conditionInjection = constructSQLCondition( decodeQuotes( queryInputString ), ITEM_TABLE_PREFIX );
+      logRequest( request.url, 'condition string: ' + conditionInjection );    
+
+      if( queryInputString != '' )
+        queryObject = JSON.parse( decodeQuotes( queryInputString ) );
+      propertyCondition = '';
+      currentCondition = '';
+      numberOrder = '';
+      for( var property in queryObject ) {
+        if( property.indexOf( "propertyId_" ) >= 0 ) {
+            numberOrder = property.slice( property.lastIndexOf( '_' ) );
+            currentCondition = constructSQLCondition( JSON.stringify( { propertyId: queryObject[ property ], 
+                                                                        value: queryObject[ 'value' + numberOrder ] } ) );
+            if( propertyCondition != '' ) {
+              currentCondition = currentCondition.replace( 'WHERE', 'OR' );
+            }
+            propertyCondition += currentCondition;
+            propertyCount++;
+        }
       }
+      if( propertyCondition != '' ) {
+          if( conditionInjection == '' ) 
+              conditionInjection = " WHERE ( ";
+          else  
+              conditionInjection += " AND ( ";
+          conditionInjection += 'id IN \
+                ( SELECT itemId\
+                  FROM itemProperties\
+                  ' + propertyCondition + '\
+                  GROUP BY itemId\
+                  HAVING COUNT( propertyId ) = ' + propertyCount + ' ) ';
+          conditionInjection += ' ) ';        
+      }
+
     }
-    if( propertyCondition != '' ) {
-        if( conditionInjection == '' ) 
-            conditionInjection = " WHERE ( ";
-        else  
-            conditionInjection += " AND ( ";
-        conditionInjection += 'id IN \
-              ( SELECT itemId\
-                FROM itemProperties\
-                ' + propertyCondition + '\
-                GROUP BY itemId\
-                HAVING COUNT( propertyId ) = ' + propertyCount + ' ) ';
-        conditionInjection += ' ) ';        
+    catch ( error )  {
+      logRequest( error );
+      serverSideError( request, response )
     }
 
     querySQL = querySQL.replace( 'conditionInjection', conditionInjection );
@@ -598,6 +639,7 @@ function propertyCompareSign( propertryName ) {
 }
 //-----------------------------------------------------------------------------
 function logRequest( url,message ) {
-	console.log( '' + ( new Date() ).toLocaleString() + ' url: ' + url + ' processed ' + message );
+  if( DEBUG_MODE )
+	 console.log( '' + ( new Date() ).toLocaleString() + ' url: ' + url + ' processed ' + message );
 }
 //-----------------------------------------------------------------------------
