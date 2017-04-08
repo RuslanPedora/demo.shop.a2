@@ -1,14 +1,14 @@
-<div id='item'>	
+<div id='item' class='glAltLightBgColor'>	
 	<div id='imageContainer'>
 		<div id='imageDiv'>
 			<img id='mainImage' src='{{imagePath}}{{mainImage}}'>	
 		</div>
 		<div id='imageList'>
-				<img *ngFor='let imageSrc of imageList' src='{{imagePath}}{{imageSrc}}' class='smallImage' (click)='changeImage(imageSrc)'>
+				<img *ngFor='let imageSrc of imageList' src='{{imagePath}}{{imageSrc}}' class='smallImage glClickableCursor' (click)='changeImage(imageSrc)'>
 		</div>
 	</div>
 	<div id='itemData'>
-		<div id='buyBlock'>
+		<div id='buyBlock' class='glAltMediumBgColor'>
 			<div id='itemName'>{{currentItem?.name}}</div>
 			<div id='itemPrice'>				
 				{{currentItem?.discountPrice.toFixed(2)}}$
@@ -21,8 +21,8 @@
 			<button id='buyButton' (click)=addItemToShoppingCart()>buy</button>	
 		</div>
 		<br>
-		<button class='navButton' (click)='goBack()'>back</button>
-		<button class='navButton' (click)='goToItemList()'>Go to item list</button>
+		<button class='navButton' (click)='goBack()'>back...</button>
+		<button class='navButton' (click)='goToItemList()'>go to item list</button>
 		<hr>
 		<div id='itemCategory' class='glClickableCursor'
 		     (click)='goToCategory()'>

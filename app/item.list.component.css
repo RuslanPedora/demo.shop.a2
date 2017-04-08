@@ -8,22 +8,17 @@
 	background-color: #E8F8F5;		
 	color: black;
 }
-#panel {
-	height: 1cm;	
+#panel {	
 	clear: both;
 	float: none;
-	border: 1px solid grey;
 }
 .option {
 	height: 0.7cm;
 	padding: 3px;
-	margin: 3px;
-	border: 1px solid black;
-	border-radius: 0.1cm;
+	margin: 6px 3px 6px 3px;
+	border: 1px solid rgb( 200, 200, 200 );	
 	display: inline-block;
-}
-.selected {
-	background-color: #8EDBD6;
+	font-weight: bold;
 }
 .leftFloat {
 	float: left;
@@ -34,9 +29,11 @@
 .itemLine {	
 	margin: 1%;
 	padding-top: 15%;
-	border: 1px solid black;
-	border-radius: 0.1cm;
+	border: 1px solid grey;
 	position: relative;
+}
+.itemLine:hover {	
+	border: 1px solid black;
 }
 .itemLineWrapper {
 	width: 100%;
@@ -50,23 +47,24 @@
 	width: 15%;
 	height: 100%;
 	display: inline-block;
-	border-radius: 0.1cm;
 	position: relative;
 }
 .lineImage {	
 	max-width: 100%;
 	max-height: 100%;	
 	border: 1px solid rgb( 50, 50, 50);
-	border-radius: 0.1cm;
 }
 .lineImageBig {	
-	max-width: 300%;
+	width: 300%;
 	max-height: 300%;	
 	border: 1px solid rgb( 50, 50, 50);
-	border-radius: 0.1cm;
-	position: absolute;
+	position: relative;
 	top: 0%;
 	left: 0%;
+	display: none;
+	z-index: 20;
+}
+.itemLineImageDiv:hover .lineImage {
 	display: none;
 }
 .itemLineImageDiv:hover .lineImageBig {
@@ -112,7 +110,6 @@
 .pages {
 	clear: both;
 	padding: 2px;
-	border: 1px solid black;
 	display: block;
 }
 .pageNumber {
@@ -125,16 +122,14 @@
 	text-align: center;
 	margin: 2px;
 }
-.pageNumber:hover:not(.selected) {
-	background-color: #8EDBD6;
-}
-.unSelectedPage {	
-	background-color: #FAE5D3;
+#itemTable {
+	width: 100%;
+	display: block;
 }
 .itemTileWrapper {
 	width: 20%;
-	padding-top: 20%;
-	float: left;
+	padding-top: 20%;	
+	display: inline-block;
 	position: relative;
 }
 .itemTile {
@@ -143,10 +138,12 @@
 	margin: 2%;
 	padding: 2%;
 	border: 1px solid black;
-	border-radius: 0.1cm;
 	top: 0%;
 	left: 0%;
 	position: absolute;
+}
+.itemTile:hover {
+	border: 2px solid black;
 }
 .blockImage {
 	max-width: 100%;	

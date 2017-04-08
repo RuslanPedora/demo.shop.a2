@@ -291,6 +291,7 @@ function makeResponseOnDBData( querySQL, request, response ) {
     connection.query( querySQL, function ( error, results, fields ) {
                         if (error) { 
                           logRequest( 'db connetion failed: ' + querySQL );
+                          logRequest( 'Error: ' + error );
                           return;
                         }
                         response.writeHead( 200, {'Content-Type': 'text/plain' } );

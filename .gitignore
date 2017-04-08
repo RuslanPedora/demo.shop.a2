@@ -1,0 +1,6 @@
+/e2e/*
+/typings/*
+/node_modules/*
+/app/images/
+/app/*.map
+/app/*.log

@@ -1,8 +1,32 @@
 <div id='mainBlock'>
 	<div id='header'>	
-		Search: <input type='text' [(ngModel)]='nameMask'>
-		<button (click)='searchByName()'>search...</button>		
-		<a routerLink='/shopping-cart' class='shoppingCartLink'><img src='app/images/shopping-cart.jpg' width=30>{{eventValue.toFixed(2)}}</a>	
+		<div id='prefix' class='glMediumBgColor glLeftFloat glSmallBrRadius'>
+			<img id='blockImage' class='glSmallBrRadius' src='app/images/logo.jpg'>
+		</div>
+		<div id='headerLine' class='glLightBgColor'>
+			<div id='searchBar' class='glLeftFloat'>
+				<table><tr><td>
+
+				Looking for: <input type='text' [(ngModel)]='nameMask' placeholder='input search term...'>
+				<button (click)='searchByName()'>search...</button>		
+
+				</td></tr></table>
+			</div>	
+			<div id='shoppingCart' class='glRightFloat'>
+				<a routerLink='/shopping-cart'>
+					<table>
+						<tr>
+							<td>
+								{{eventValue.toFixed(2)}}$
+							</td>
+							<td>
+								<img src='app/images/shopping-cart.jpg' width='30'>
+							</td>
+						</tr>
+					</table>			
+				</a>	
+			</div>
+		</div>
 	</div>
 	<div id='content'>
 		<filter (filterValueChangeEvent)='onFilterChange($event)'></filter>
@@ -10,8 +34,8 @@
 			<div id='leftBlock' class='leftFloatDiv maxHeightDiv'>
 				<div id='outlet'><router-outlet></router-outlet></div>
 			</div>
-			<div id='rightBlock' class='maxHeightDiv'>
-				this is right side block
+			<div id='rightBlock' class='maxHeightDiv glMediumBgColor'>
+				<img id='verticalImage' class='glSmallBrRadius' src='app/images/vertical.jpg'>
 			</div>	
 		</div>
 	</div>

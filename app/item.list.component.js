@@ -10,13 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var angular_2_local_storage_1 = require('angular-2-local-storage');
 var data_service_1 = require('./data.service');
 var ItemListComponent = (function () {
     //-----------------------------------------------------------------------------
-    function ItemListComponent(router, activatedRoute, dataService) {
+    function ItemListComponent(router, activatedRoute, dataService, localStorageService) {
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.dataService = dataService;
+        this.localStorageService = localStorageService;
         this.itemList = [];
         this.queryString = 'query string';
         this.sortedByNameAsc = true;
@@ -32,6 +34,7 @@ var ItemListComponent = (function () {
     ItemListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.imagePath = this.dataService.getImagesPath();
+        this.restoreFromLocalStorage();
         this.activatedRoute.queryParams.subscribe(function (queryParams) {
             var keyPrefix = _this.dataService.getItemListKeyPrefix();
             var propertyWithoutPrefix = '';
@@ -58,6 +61,39 @@ var ItemListComponent = (function () {
             }
         });
     };
+    //----------------------------------------------------------------------------
+    ItemListComponent.prototype.restoreFromLocalStorage = function () {
+        var restoredValue;
+        restoredValue = this.localStorageService.get('demoShopShownAsList');
+        if (restoredValue != undefined)
+            this.shownAsList = restoredValue;
+        restoredValue = this.localStorageService.get('demoShopItemPerPage');
+        if (restoredValue != undefined)
+            this.itemPerPage = restoredValue;
+        restoredValue = this.localStorageService.get('demoShopSortedByNameAsc');
+        if (restoredValue != undefined) {
+            this.sortedByNameAsc = restoredValue;
+        }
+        restoredValue = this.localStorageService.get('demoShopSortedByNameDes');
+        if (restoredValue != undefined) {
+            this.sortedByNameDes = restoredValue;
+        }
+        restoredValue = this.localStorageService.get('demoShopSortedByPriceAsc');
+        if (restoredValue != undefined) {
+            this.sortedByPriceAsc = restoredValue;
+        }
+        restoredValue = this.localStorageService.get('demoShopSortedByPriceDes');
+        if (restoredValue != undefined) {
+            this.sortedByPriceDes = restoredValue;
+        }
+    };
+    //-----------------------------------------------------------------------------
+    ItemListComponent.prototype.storeSorting = function () {
+        this.localStorageService.set('demoShopSortedByNameAsc', this.sortedByNameAsc);
+        this.localStorageService.set('demoShopSortedByNameDes', this.sortedByNameDes);
+        this.localStorageService.set('demoShopSortedByPriceAsc', this.sortedByPriceAsc);
+        this.localStorageService.set('demoShopSortedByPriceDes', this.sortedByPriceDes);
+    };
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.sortByNameAsc = function () {
         this.sortedByNameAsc = true;
@@ -65,6 +101,7 @@ var ItemListComponent = (function () {
         this.sortedByPriceAsc = false;
         this.sortedByPriceDes = false;
         this.itemList.sort(function (a, b) { return a.name < b.name ? -1 : 1; });
+        this.storeSorting();
     };
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.sortByNameDes = function () {
@@ -73,6 +110,7 @@ var ItemListComponent = (function () {
         this.sortedByPriceAsc = false;
         this.sortedByPriceDes = false;
         this.itemList.sort(function (a, b) { return a.name > b.name ? -1 : 1; });
+        this.storeSorting();
     };
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.sortByPriceAsc = function () {
@@ -81,6 +119,7 @@ var ItemListComponent = (function () {
         this.sortedByPriceAsc = true;
         this.sortedByPriceDes = false;
         this.itemList.sort(function (a, b) { return a.price < b.price ? -1 : 1; });
+        this.storeSorting();
     };
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.sortByPriceDes = function () {
@@ -89,10 +128,12 @@ var ItemListComponent = (function () {
         this.sortedByPriceAsc = false;
         this.sortedByPriceDes = true;
         this.itemList.sort(function (a, b) { return a.price > b.price ? -1 : 1; });
+        this.storeSorting();
     };
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.showAsList = function (value) {
         this.shownAsList = value;
+        this.localStorageService.set('demoShopShownAsList', value);
     };
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.showItemDetail = function (item) {
@@ -117,6 +158,14 @@ var ItemListComponent = (function () {
             .then(function (itemList) {
             _this.itemList = itemList;
             _this.currentPage = -1;
+            if (_this.sortedByNameAsc)
+                _this.sortByNameAsc();
+            if (_this.sortedByNameDes)
+                _this.sortByNameDes();
+            if (_this.sortedByPriceAsc)
+                _this.sortByPriceAsc();
+            if (_this.sortedByPriceDes)
+                _this.sortByPriceDes();
             _this.initPages();
         });
     };
@@ -145,6 +194,7 @@ var ItemListComponent = (function () {
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.changeItemsPerPage = function (value) {
         this.itemPerPage = Number.parseInt(value);
+        this.localStorageService.set('demoShopItemPerPage', this.itemPerPage);
         this.currentPage = -1;
         this.initPages();
     };
@@ -155,7 +205,7 @@ var ItemListComponent = (function () {
             templateUrl: './item.list.component.html',
             styleUrls: ['./item.list.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, data_service_1.DataService])
+        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, data_service_1.DataService, angular_2_local_storage_1.LocalStorageService])
     ], ItemListComponent);
     return ItemListComponent;
 }());

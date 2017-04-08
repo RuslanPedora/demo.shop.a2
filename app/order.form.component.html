@@ -1,4 +1,4 @@
-<div id='orderFormDiv' class='font glSmallBrRadius'>
+<div id='orderFormDiv' class='font glSmallBrRadius glAltLightBgColor'>
 	<div id='personal'>
 		<form id='orderForm' (ngSubmit)='postOrder()'>
 			<div class='field'>
@@ -64,21 +64,20 @@
 			</tr>
 		</table>
 	</div>
-	<p>{{errorWarning}}</p>
 	<div id='buttons'>
 		<table>
 			<tr>
 				<td>
-					<button class='glSmallBrRadius' (click)='goBack()'>back...</button>
+					<button class='' (click)='goBack()'>back...</button>
 				</td>
 				<td>
-					<button class='glSmallBrRadius' type='submit' form='orderForm'>Submit</button>
+					<button class='' type='submit' form='orderForm'>Submit</button>
 				</td>
 			</tr>
 		</table>
 	<div>
-	<div id='message' class='glSmallBrRadius' *ngIf='displayMessage'>
+	<div id='message' class='glSmallBrRadius glMediumBgColor glAltMediumBgColor' *ngIf='displayMessage'>
 		<p>Your order: {{orderNumber}} has been sent on your e-mail {{email}}</p>
-		<button id='closeButton' class='glSmallBrRadius glRightFloat' (click)='displayMessage=false'>close</button>
+		<button id='closeButton' class='glRightFloat' (click)='displayMessage=false'>close</button>
 	</div>
 </div>

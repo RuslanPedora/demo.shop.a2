@@ -1,4 +1,4 @@
-<div *ngFor='let node of categoryList' class='categoryItem glGreenHover glClickableCursor glMediumBgColor glSmallBrRadius'>
+<div *ngFor='let node of categoryList' class='categoryItem glColorHover glClickableCursor glMediumBgColor glSmallBrRadius'>
 		<div class='categoryLink' 
 		     [ngClass]="{'categoryUnClickable': node.subMenu, 'categoryClickable': !node.subMenu }"
 		     (click)=chooseCategory(node)

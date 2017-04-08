@@ -1,36 +1,32 @@
 <div id='itemList'>
-	Query string: {{queryString}}
-	<hr>
-	{{itemList.length}}
-	<hr>
-	<div id='panel'>
-		<div class='option glClickableCursor' 
-			 [ngClass]="{'selected':sortedByNameAsc}"
+	<div id='panel' class='glAltLightBgColor'>
+		<div class='option glClickableCursor glSmallBrRadius' 
+			 [ngClass]="{'glColorSelected':sortedByNameAsc}"
 		     (click)='sortByNameAsc()'>Name ⇧
 		</div>
-		<div class='option glClickableCursor' 
-		     [ngClass]="{'selected':sortedByNameDes}"
+		<div class='option glClickableCursor glSmallBrRadius' 
+		     [ngClass]="{'glColorSelected':sortedByNameDes}"
 		     (click)='sortByNameDes()'>Name ⇩
 		</div>
-		<div class='option glClickableCursor' 
-			 [ngClass]="{'selected':sortedByPriceAsc}"
+		<div class='option glClickableCursor glSmallBrRadius' 
+			 [ngClass]="{'glColorSelected':sortedByPriceAsc}"
 		     (click)='sortByPriceAsc()'>Price ⇧
 		</div>
-		<div class='option glClickableCursor' 
-		     [ngClass]="{'selected':sortedByPriceDes}"
+		<div class='option glClickableCursor glSmallBrRadius' 
+		     [ngClass]="{'glColorSelected':sortedByPriceDes}"
 		     (click)='sortByPriceDes()'>Price ⇩
 		</div>
-		<div class='option rightFloat glClickableCursor' 
-			 [ngClass]="{'selected':!shownAsList}"
+		<div class='option rightFloat glClickableCursor glSmallBrRadius' 
+			 [ngClass]="{'glColorSelected':!shownAsList}"
 		     (click)='showAsList(false)'><img src='app/images/table_icon.jpg' class='iconImage'>
 	    </div>
-		<div class='option rightFloat glClickableCursor' 
-		     [ngClass]="{'selected':shownAsList}"
+		<div class='option rightFloat glClickableCursor glSmallBrRadius' 
+		     [ngClass]="{'glColorSelected':shownAsList}"
 		     (click)='showAsList(true)'><img src='app/images/list_icon.jpg' class='iconImage'>
 		</div>
-		<div class='option rightFloat glClickableCursor'>
+		<div class='option rightFloat glClickableCursor glSmallBrRadius'>
 			<label>Item on page: </label>
-			<select value=25 #itemPrePageSelect (change)=changeItemsPerPage($event.target.value)>
+			<select value={{itemPerPage}} #itemPrePageSelect (change)=changeItemsPerPage($event.target.value)>
 				<option value=25>25</option>
 				<option value=50>50</option>
 				<option value=100>100</option>
@@ -39,26 +35,26 @@
 		</div>
 	</div>
 	<div class='pages' *ngIf='pages.length>0'>
-		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
+		<div class='glClickableCursor pageNumber glAltLightBgColor glSmallBrRadius glColorHover'
 		     (click)='setCurrentPage(0)'>
 		     &laquo;
 		</div>
 		<div  *ngFor='let page of pages'		    
-		    [ngClass]="{'pageNumber': true, 'glClickableCursor': true, 'glSmallBrRadius': true, 'selected': page==currentPage, 'unSelectedPage': page!=currentPage}"
+		    [ngClass]="{'pageNumber': true, 'glClickableCursor': true, 'glColorHover': true, 'glSmallBrRadius': true, 'glColorSelected': page==currentPage, 'glAltLightBgColor': page!=currentPage}"
 		    (click)='setCurrentPage(page)'>
 			{{page+1}} 
 		</div>
-		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
+		<div class='glClickableCursor pageNumber glAltLightBgColor glSmallBrRadius glColorHover'
 		     (click)='setCurrentPage(pages.length-1)'>
 		     &raquo;
 		</div>		
 	</div>
 	<div id='itemList' *ngIf='shownAsList'>
-		<div *ngFor="let item of itemList| slice:firstElemntInc:lastElemntExc" class='itemLine'>
+		<div *ngFor="let item of itemList| slice:firstElemntInc:lastElemntExc" class='itemLine glSmallBrRadius'>
 			<div class='itemLineWrapper'>
-				<div class='itemLineImageDiv'>	
-					<img src='{{imagePath}}{{item.mainImage}}' class='lineImage glClickableCursor' (click)=showItemDetail(item)>
-					<img src='{{imagePath}}{{item.mainImage}}' class='lineImageBig glClickableCursor' (click)=showItemDetail(item)>
+				<div class='itemLineImageDiv glSmallBrRadius'>	
+					<img src='{{imagePath}}{{item.mainImage}}' class='lineImage glClickableCursor glSmallBrRadius' (click)=showItemDetail(item)>
+					<img src='{{imagePath}}{{item.mainImage}}' class='lineImageBig glClickableCursor glSmallBrRadius' (click)=showItemDetail(item)>
 				</div>	
 				<div class='itemLineNameDiv'>	
 					<div class='itemLineNameWrapper'>
@@ -81,7 +77,7 @@
 	</div>
 	<div id='itemTable' *ngIf='!shownAsList'>
 		<div *ngFor="let item of itemList| slice:firstElemntInc:lastElemntExc" class='itemTileWrapper'>
-			<div class='itemTile'>
+			<div class='itemTile glSmallBrRadius'>
 				<div class='tileImageBlock'>
 					<img src='{{imagePath}}{{item.mainImage}}' class='blockImage glClickableCursor'(click)=showItemDetail(item)>
 				</div>	
@@ -97,20 +93,5 @@
 				</div>	
 			</div>
 		</div>
-	</div>	
-	<div class='pages' *ngIf='pages.length>0'>
-		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
-		     (click)='setCurrentPage(0)'>
-		     &laquo;
-		</div>
-		<div  *ngFor='let page of pages'		    
-		    [ngClass]="{'pageNumber': true, 'glClickableCursor': true, 'glSmallBrRadius': true, 'selected': page==currentPage, 'unSelectedPage': page!=currentPage}"
-		    (click)='setCurrentPage(page)'>
-			{{page+1}} 
-		</div>
-		<div class='glClickableCursor pageNumber unSelectedPage glSmallBrRadius'
-		     (click)='setCurrentPage(pages.length-1)'>
-		     &raquo;
-		</div>		
 	</div>	
 </div>

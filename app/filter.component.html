@@ -1,8 +1,8 @@
 <div id='filterComponent' class='glLightBgColor'>
-	<div id='categorySwitcher' class='glMediumBgColor glSmallBrRadius glClickableCursor glGreenHover'
+	<div id='categorySwitcher' class='glMediumBgColor glSmallBrRadius glClickableCursor glColorHover'
 	     *ngIf='!showAsCategoryTree'
 	     (click)='showAsCategoryTree=true;categoryId=-1'>
-		> {{categoryName}} <
+		{{categoryName.toUpperCase()}}
 		
 	</div>	
 	<hr *ngIf='!showAsCategoryTree'>
@@ -14,7 +14,7 @@
 		<div *ngFor='let property of selectedProperties' class='propertySelectedDiv glMediumBgColor'>
 			{{property.itemProperty.name}}:
 			<div *ngFor='let value of property.itemPropertyList' 
-			     class='valueDiv glSmallBrRadius glClickableCursor glGreenHover'
+			     class='valueDiv glSmallBrRadius glClickableCursor glColorHover'
 			     (click)='deleteToSelectedProperties(value)'>
 				{{value.value}}
 			</div>
@@ -38,7 +38,7 @@
 		<div *ngFor='let property of availableProperties' class='propertyAvailableDiv glMediumBgColor'>
 			{{property.itemProperty.name}}:
 			<div *ngFor='let value of property.itemPropertyList' 
-			     class='valueDiv glSmallBrRadius glClickableCursor glGreenHover'
+			     class='valueDiv glSmallBrRadius glClickableCursor glColorHover'
 			     (click)='addToSelectedProperties(value)'>
 			{{value.value}}
 			</div>

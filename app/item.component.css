@@ -3,8 +3,7 @@
 	height: 100%;
 	padding: 0;
 	margin: 0;
-	color: white;
-	background-color: grey;
+	color: black;
 	padding: 2%;
 }
 #imageContainer {
@@ -35,7 +34,11 @@
 	border-radius: 15%;
 	float: left;
 	display: inline-block;
+	opacity: 0.9;
 }
+.smallImage:hover {
+	opacity: 1;
+}	
 #itemData {	
 	width: 50%;
 	height: 100%;
@@ -43,7 +46,6 @@
 	padding-left: 2%;
 }
 #buyBlock {
-	background-color: blue;
 	border-radius: 10px;
 }
 #itemName, #itemPrice {
@@ -65,11 +67,14 @@
 	margin-bottom: 2%;
 	font-size: 2vw;
 	border-radius: 10px;
-	border: 1px solid black;	
+	border: 1px solid grey;
+}
+#itemCategory:hover {
+	border: 1px solid black;
 }
 #itemPropertyList {
 	border-radius: 10px;
-	border: 1px solid black;
+	border: 1px solid grey;
 }
 #itemPropertyList table, tr {
 	width: 100%;	
