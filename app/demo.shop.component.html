@@ -29,14 +29,14 @@
 		</div>
 	</div>
 	<div id='content'>
-		<filter (filterValueChangeEvent)='onFilterChange($event)'></filter>
-		<div id='data' class='maxHeightDiv'>
-			<div id='leftBlock' class='leftFloatDiv maxHeightDiv'>
-				<div id='outlet'><router-outlet></router-outlet></div>
-			</div>
-			<div id='rightBlock' class='maxHeightDiv glMediumBgColor'>
-				<img id='verticalImage' class='glSmallBrRadius' src='app/images/vertical.jpg'>
-			</div>	
-		</div>
+		<div id='filterDiv' class='maxHeightDiv glLeftFloat'>
+			<filter (filterValueChangeEvent)='onFilterChange($event)'></filter>
+		</div>	
+		<div id='imageDiv' class='maxHeightDiv glRightFloat'>
+			<img id='verticalImage' class='glSmallBrRadius' src='app/images/vertical.jpg'>
+		</div>	
+	    <div id='outlet'>
+	    	<router-outlet></router-outlet>
+	    </div>
 	</div>
 </div>

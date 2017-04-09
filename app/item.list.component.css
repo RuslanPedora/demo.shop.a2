@@ -11,6 +11,7 @@
 #panel {	
 	clear: both;
 	float: none;
+	border-bottom: 1px solid rgb( 200, 200, 200 );
 }
 .option {
 	height: 0.7cm;
@@ -44,7 +45,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;	
-	padding: 3px;
+	padding: 1%;
 }
 .itemLineImageDiv {	
 	width: 15%;
@@ -120,7 +121,7 @@
 	max-width: 1.5cm;
 	min-width: 0.5cm;
 	padding: 5px;	
-	font-size: 0.8vw;
+	font-size: 100%;
 	display: inline-block;	
 	text-align: center;
 	margin: 2px;
@@ -135,6 +136,30 @@
 	display: inline-block;
 	position: relative;
 }
+@media only screen and (max-width: 40cm) {
+	.itemTileWrapper {
+		width: 25%;
+		padding-top: 25%;	
+	}
+}	
+@media only screen and (max-width: 35cm) {
+	.itemTileWrapper {
+		width: 33%;
+		padding-top: 33%;	
+	}
+}	
+@media only screen and (max-width: 20cm) {
+	.itemTileWrapper {
+		width: 50%;
+		padding-top: 50%;	
+	}
+}	
+@media only screen and (max-width: 12cm) {
+	.itemTileWrapper {
+		width: 100%;
+		padding-top: 100%;	
+	}
+}	
 .itemTile {
 	width: 96%;
 	height: 96%;
@@ -144,6 +169,10 @@
 	top: 0%;
 	left: 0%;
 	position: absolute;
+	font-size: 100%;
+}
+.itemTile button {
+	font-size: 100%;	
 }
 .itemTile:hover {
 	border: 2px solid black;

@@ -15,7 +15,7 @@
 }
 .categoryLink {
 	padding: 3%;
-	font-size: 1vw;
+	font-size: 100%;
 }
 .subMenuMarker {
 	display: inline;
@@ -24,3 +24,15 @@
 .categoryUnClickable {
 	cursor: zoom-in;
 }
+.submenuBottom {
+	border: 1px solid rgb( 200, 200, 200 );
+	display: none;
+}
+@media only screen and (max-width: 20cm) {
+	.categorySubmenu {
+		position: initial;
+	}	
+	.submenuBottom {
+		display: block;
+	}	
+}	

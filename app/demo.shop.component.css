@@ -1,9 +1,8 @@
 #mainBlock {
 	width: 100%;	
-	height: 89%;	
+	height: 96%;	
 	padding: 0;
 	margin: 0;
-	background-color: rgb( 255, 255, 255 );
 }
 #header {
 	height: 1.2cm;
@@ -46,38 +45,31 @@
 	padding: 2px;
 	border: 1px solid black;
 }
+#content{
+	height: 95%;
+}
+#filterDiv{
+	width: 5cm;
+}
+#imageDiv{
+	width: 10cm;
+}
 #verticalImage {
 	width: 100%;
-	height: 99%;
+	height: 100%;
 	margin: 0;
 	padding: 0;
-}
-#content{
-	width: 100%;
-	height: 100%;
-}
-#leftBlock {
-	width: 70%;
 }
 #outlet {	
-	width: 100%;
-	height: 100%;		
-	float: left;
-	padding: 0;
-	margin: 0;
-	word-break: break-all;
-	overflow: auto;
-	color: white;
+	height: 100%;
+	overflow-x: scroll;
+	overflow-y: scroll;
 	background-color: rgb( 250, 255, 250 );
 }
-#rightBlock {	
-	overflow: auto;
-	word-break: break-all;
-	padding: 0;
-	margin: 0;
-}
-.leftFloatDiv {
-	float: left;
+@media only screen and (max-width: 32cm) {
+	#imageDiv{	
+		display: none;
+	}	
 }
 .maxHeightDiv {
 	height: 100%;

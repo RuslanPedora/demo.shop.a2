@@ -50,15 +50,15 @@
 }
 #itemName, #itemPrice {
 	text-align: center;
-	font-size: 300%; 
+	font-size: 3vw; 
 }
 #buyButton {	
 	width: 50%;
 	margin: 5% 25% 5% 25%;
-	font-size: 200%;
+	font-size: 2vw;
 }
 .navButton {
-	width: 47.5%;
+	width: 46%;
 	margin: 1%;
 	font-size: 150%;
 }

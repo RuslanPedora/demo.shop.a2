@@ -4,10 +4,10 @@
     (mousedown)='mouseDown($event)'
     (mouseup)='mouseUp($event)'    
     (mousemove)='mouseMove($event)'>
-	<button (click)='yPlus()' id='yPlus' class='slideButton' draggable='false'>🠜</button>
-	<button (click)='yMinus()' id='yMinus' class='slideButton' draggable='false'>🠞</button>
-	<button (click)='xPlus()' id='xPlus' class='slideButton' draggable='false'>🠝</button>
-	<button (click)='xMinus()' id='xMinus' class='slideButton' draggable='false'>🠟</button>
+	<button (click)='yPlus()' id='yPlus' class='slideButton glAltLightBgColor' draggable='false'><</button>
+	<button (click)='yMinus()' id='yMinus' class='slideButton glAltLightBgColor' draggable='false'>></button>
+	<button (click)='xPlus()' id='xPlus' class='slideButton glAltLightBgColor' draggable='false'><</button>
+	<button (click)='xMinus()' id='xMinus' class='slideButton glAltLightBgColor' draggable='false'>></button>
 	<div *ngFor="let point of viewList" class='slideObject' draggable='false' 
 	                                    style.left='{{point.xView}}%' 
 	                                    style.top='{{point.yView}}%'
