@@ -57,6 +57,13 @@
 	margin: 5% 25% 5% 25%;
 	font-size: 2vw;
 }
+#buyButton input{
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 1cm;
+	height: 1cm;
+}
 .navButton {
 	width: 46%;
 	margin: 1%;

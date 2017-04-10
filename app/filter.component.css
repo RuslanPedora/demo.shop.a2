@@ -4,7 +4,7 @@
 	float: left;
 	padding: 0;
 	margin: 0;		
-	overflow: visible;
+	overflow-x: visible;
 }
 #categoryDiv {		
 }
@@ -16,7 +16,7 @@
 }
 .propertyAvailableDiv {
 	padding: 0 1% 0 5%;
-	font-size: 1.2vw;
+	font-size: 120%;
 }
 .valueDiv {
 	padding: 1% 1% 1% 10%;

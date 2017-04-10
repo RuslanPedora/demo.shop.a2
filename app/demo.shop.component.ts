@@ -18,12 +18,17 @@ export class DemoShop implements OnInit, OnDestroy {
 	private eventValue: number = 0;
 	private shoppingCartListener: Subscription;
 	private nameMask: string = '';	
+	private showFilter: boolean = true;
 	//-----------------------------------------------------------------------------
 	constructor( private dataService: DataService,
 	             private router: Router ) {
 	}
 	//-----------------------------------------------------------------------------
-	searchByName() {
+	toggelFilter(): void {
+		this.showFilter = !this.showFilter;
+	}
+	//-----------------------------------------------------------------------------
+	searchByName(): void {
 		let filterObject = {};
 		if( this.nameMask == '' )
 			this.routeItemList();

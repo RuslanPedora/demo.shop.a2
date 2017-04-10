@@ -18,7 +18,12 @@ var DemoShop = (function () {
         this.router = router;
         this.eventValue = 0;
         this.nameMask = '';
+        this.showFilter = true;
     }
+    //-----------------------------------------------------------------------------
+    DemoShop.prototype.toggelFilter = function () {
+        this.showFilter = !this.showFilter;
+    };
     //-----------------------------------------------------------------------------
     DemoShop.prototype.searchByName = function () {
         var filterObject = {};

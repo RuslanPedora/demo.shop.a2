@@ -18,7 +18,10 @@
 					(-{{currentItem?.discount}}%)
 				</ng-container>
 			</div>
-			<button id='buyButton' (click)=addItemToShoppingCart()>buy</button>	
+			<button id='buyButton' (click)=addItemToShoppingCart()>buy
+				<img src='app/buy-cart.png' class='iconImage'>
+				<!-- <input type='image' src='app/buy-cart.png' (click)=addItemToShoppingCart() placeholder='buy'> -->
+			</button>
 		</div>
 		<br>
 		<button class='navButton' (click)='goBack()'>back...</button>

@@ -1,4 +1,4 @@
-<div id='itemList'>
+<div id='itemContainer'>
 	<div id='panel' class='glAltLightBgColor'>
 		<div class='option glClickableCursor glSmallBrRadius' 
 			 [ngClass]="{'glColorSelected':sortedByNameAsc}"
@@ -16,15 +16,15 @@
 		     [ngClass]="{'glColorSelected':sortedByPriceDes}"
 		     (click)='sortByPriceDes()'>Price ⇩
 		</div>
-		<div class='option rightFloat glClickableCursor glSmallBrRadius' 
-			 [ngClass]="{'glColorSelected':!shownAsList}"
-		     (click)='showAsList(false)'><img src='app/images/table_icon.jpg' class='iconImage'>
-	    </div>
-		<div class='option rightFloat glClickableCursor glSmallBrRadius' 
+		<div class='option glRightFloat glClickableCursor glSmallBrRadius' 
 		     [ngClass]="{'glColorSelected':shownAsList}"
-		     (click)='showAsList(true)'><img src='app/images/list_icon.jpg' class='iconImage'>
+		     (click)='showAsList(true)'><img src='app/menu.png' class='iconImage'>
 		</div>
-		<div class='option rightFloat glClickableCursor glSmallBrRadius'>
+		<div class='option glRightFloat glClickableCursor glSmallBrRadius' 
+			 [ngClass]="{'glColorSelected':!shownAsList}"
+		     (click)='showAsList(false)'><img src='app/layout.png' class='iconImage'>
+	    </div>
+		<div class='option glRightFloat glClickableCursor glSmallBrRadius'>
 			<label>Item on page: </label>
 			<select value={{itemPerPage}} #itemPrePageSelect (change)=changeItemsPerPage($event.target.value)>
 				<option value=25>25</option>
@@ -69,7 +69,9 @@
 						</ng-container>
 					</div>
 					<div class='itemLineButtonWrapper'>						
-						<button (click)=addItemToShoppingCart(item) class='glClickableCursor'>buy</button>					
+						<button (click)=addItemToShoppingCart(item) class='glClickableCursor'>
+							<img src='app/buy-cart.png' class='iconImage'>
+						</button>					
 					</div>
 				</div>
 			</div>
@@ -89,7 +91,9 @@
 					<ng-container *ngIf='item.discount>0'>
 						<del>({{item.price.toFixed(2)}}$)</del>
 					</ng-container>
-					<button (click)=addItemToShoppingCart(item) class='rightFloat tileButton glClickableCursor'>buy</button>				
+					<button (click)=addItemToShoppingCart(item) class='glRightFloat tileButton glClickableCursor'>
+						<img src='app/buy-cart.png' class='iconImage'>
+					</button>				
 				</div>	
 			</div>
 		</div>

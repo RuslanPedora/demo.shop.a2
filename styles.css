@@ -19,5 +19,11 @@ body {
 	padding: 0;
 	margin: 0;
 	text-align: center;	
-	font-size: 1.5vw;
+	font-size: 150%;
+	overflow-y: auto;
+}
+@media only screen and (max-width: 20cm) {
+	#innerTopic{	
+		font-size: 100%;
+	}	
 }
