@@ -17,7 +17,9 @@
 			<td class='orderFont bottomBorder'>{{orderRow.item.name}}</td>
 			<td class='bottomBorder'>
 				<div class='orderButtonWrapper shiftedOrderButtonWrapper bottomBorder'>
-					<button class='orderRowButton glClickableCursor' (click)=deleteItem(orderRow.item)>-</button>
+					<button class='orderRowButton glClickableCursor' (click)=deleteItem(orderRow.item)>
+						<img src='app/minus.ico'>
+					</button>
 				</div>
 			</td>
 			<td class='tdRight bottomBorder'>
@@ -27,7 +29,9 @@
 			</td>
 			<td class='bottomBorder bottomBorder'>
 				<div class='orderButtonWrapper'>
-					<button class='orderRowButton glClickableCursor' (click)=addItem(orderRow.item)>+</button>		
+					<button class='orderRowButton glClickableCursor' (click)=addItem(orderRow.item)>
+						<img src='app/plus.ico'>
+					</button>		
 				</div>
 			</td>
 			<td class='tdRight orderFont bottomBorder'>

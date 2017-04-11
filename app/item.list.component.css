@@ -7,6 +7,41 @@
 	background-color: #E8F8F5;		
 	color: black;
 }
+#panelContainer {
+	position: relative;
+}
+#panelContainer #drilldownPointer {
+	width: 0.7cm;
+	height: 0.7cm;
+	display: none;
+	top: 0%;
+	left: 45%;		
+	position: absolute;
+	z-index: 60;
+}
+@media only screen and (max-width: 15cm) {
+	#panelContainer:hover {
+		display: block;
+	}
+	#panelContainer #drilldownPointer {
+		display: initial;
+	}
+	#panelContainer:hover #drilldownPointer {
+		display: none;
+	}	
+	#panelContainer #panel {
+		display: none;
+	}
+	#panelContainer .pages {
+		display: none;
+	}
+	#panelContainer:hover #panel {
+		display: initial;
+	}
+	#panelContainer:hover .pages {
+		display: initial;
+	}
+}	
 #panel {	
 	border-bottom: 1px solid rgb( 200, 200, 200 );
 }
@@ -31,7 +66,7 @@
 	display: block;
 }
 .pageNumber {
-	width: 2vw;
+	width: 200%;
 	max-width: 1.5cm;
 	min-width: 0.5cm;
 	padding: 5px;	
@@ -69,6 +104,7 @@
 	height: 100%;
 	display: inline-block;
 	position: relative;
+	margin-right: -4px;
 }
 .lineImage {	
 	max-width: 100%;
@@ -96,11 +132,12 @@
 	height: 100%;	
 	display: inline-block;
 	vertical-align: top;
+	margin-right: -4px;
 }
 .itemLineNameWrapper {
 	width: 100%;
 	height: 100%;
-	font-size: 1.5vw;
+	font-size: 150%;
 	padding-left: 1%;
 }
 .itemLinePriceDiv{
@@ -113,17 +150,35 @@
 	width: 100%;
 	height: 50%;
 	padding-top: 10%;
-	font-size: 1.5vw;
+	font-size: 150%;
 	text-align: center;
 }
 .itemLineButtonWrapper{
 	width: 100%;
 	height: 50%;
 	text-align: center;
+	position: relative;
 }
 .itemLineButtonWrapper button{
-	font-size: 1.5vw;
+	width: 80%;
+	height: 50%;
+	top: 25%;
+	left: 10%;	
+	font-size: 150%;
+	position: absolute;
+}
+.itemLineButtonWrapper div {
+	width: 20%;
+	height: 100%;	
+	top: 0%;
+	right: 0%;	
+	position: absolute;
 }	
+.itemLineButtonWrapper img{	
+	height: 100%;	
+	right: 0%;	
+	position: absolute;
+}		
 #itemTable {
 	width: 100%;
 	height: 90%;
@@ -154,6 +209,12 @@
 		width: 50%;
 		padding-top: 50%;	
 	}
+	.itemLineNameDiv {
+		width: 45%;	
+	}	
+	.itemLinePriceDiv{
+		width: 40%;
+	}	
 }	
 @media only screen and (max-width: 12cm) {
 	.itemTileWrapper {
@@ -191,14 +252,30 @@
 	padding: 2%;
 	perspective: 20px;
 }
+.tileDescriptionBlock {
+	width: 70%;
+	height: 30%;
+}
 .tileNameBlock{
-	height: 15%;
-	padding: 2%;
+	padding: 1%;
+	font-weight: bold;
 }
 .tileBottomBlock {
-	height: 15%;
-	padding: 2%;
+	padding: 1%;
 }
-.tileButton {
-	margin-right: 2%;
+.tileButton {	
+	height: 30%;
+	width: 30%;
+	position: relative;
 }
+.tileButton div {
+	top: 0%;
+	right: 0%;	
+	height: 100%;
+	position: absolute;
+}	
+.tileButton img {
+	right: 0%;
+	height: 100%;
+	position: absolute;
+}		

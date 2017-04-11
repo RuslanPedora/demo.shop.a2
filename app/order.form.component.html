@@ -5,24 +5,23 @@
 				Personal data:
 			</div>		
 			<div class='field'>
-				First name:<sup>*</sup>
+				<span>First name:<sup>*</sup></span>
 				<input [(ngModel)]='firstName' placeholder='First name'  required class='font' name='fisrtNameElement'>
 			</div>	
 			<div class='field'>	
-				Second name:
+				<span>Second name:</span>
 				<input [(ngModel)]='secondName' placeholder='Second name' class='font' name='secondNameElement'>
 			</div>	
 			<div class='field'>	
-				e-mail:<sup>*</sup>
+				<span>e-mail:<sup>*</sup></span>
 				<input [(ngModel)]='email' #emalInputField placeholder='e-mail' type='email' required class='font'  name='emailtNameElement'>
 			</div>	
 			<div class='field'>	
-				Phone number:<sup>*</sup>
+				<span>Phone number:<sup>*</sup></span>
 				<input [(ngModel)]='phoneNumber' placeholder='phone number' required class='font'  name='phoneNameElement'>
-				<br>
 			</div>	
 			<div class='field'>	
-				Comment:
+				<span>Comment:</span>
 				<textarea id='commentInput' [(ngModel)]='comment' placeholder='any comments...' class='font' name='commentElement'>
 				</textarea>
 			</div>	

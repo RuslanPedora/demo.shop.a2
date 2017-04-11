@@ -20,7 +20,7 @@
 	text-align: right;
 }
 #shoppingCart .orderFont {
-	font-size: 1.5vw;
+	font-size: 150%;
 }
 .orderButtonWrapper {
 	width: 50%;	
@@ -46,7 +46,7 @@
 	left: 0;
 	text-align: right;
 	position: absolute;
-	font-size: 2vw;
+	font-size: 100%;
 }
 .orderImage {
 	max-width: 100%;
@@ -62,13 +62,17 @@
 	height: 100%;		
 	top: 0;
 	position: absolute;
-	font-size: 2vw;
+	font-size: 200%;
+}
+.orderRowButton img {	
+	width: 100%;
+	height: 100%;
+	top: 0%;
+	left: 0%;
+	position: absolute;
 }
 .orderNavButton {
-	width: 15vw;
-	height: 2vw;
-	margin: 1vw;
-	font-size: 1.5vw;
+	font-size: 150%;
 }
 .totalTd {
 	font-weight: bold; 

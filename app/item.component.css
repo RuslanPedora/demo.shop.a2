@@ -13,13 +13,17 @@
 }
 #imageDiv{
 	width: 100%;
-	height: 78%;
+	padding-top: 100%;
 	clear: left;
+	position: relative;
 }
 #mainImage {	
 	width: 100%;
 	max-height: 100%;
-	border-radius: 5%;
+	border-radius: 5%;	
+	position: absolute;
+	top: 0%;
+	left: 0%;
 }
 #imageList {	
 	width: 100%;
@@ -45,6 +49,19 @@
 	float: left;
 	padding-left: 2%;
 }
+@media only screen and (max-width: 10cm) {
+	#item {
+		overflow-y: auto;
+	}
+	#imageContainer {
+		width: 100%;
+		height: 100%;
+	}	
+	#itemData {	
+		width: 100%;
+		height: 100%;
+	}	
+}	
 #buyBlock {
 	border-radius: 10px;
 }
@@ -52,18 +69,24 @@
 	text-align: center;
 	font-size: 3vw; 
 }
-#buyButton {	
-	width: 50%;
-	margin: 5% 25% 5% 25%;
+#buyButton {
+	width: 23%;
+	margin: 5% 38.5% 5% 38.5%;
 	font-size: 2vw;
+	position: relative;
+	text-align: left;
 }
-#buyButton input{
-	position: absolute;
+#buyButton div {
 	top: 0%;
-	left: 0%;
-	width: 1cm;
-	height: 1cm;
-}
+	right: 0%;	
+	height: 100%;
+	position: absolute;
+}	
+#buyButton img{
+	right: 0%;
+	height: 100%;
+	position: absolute;
+}	
 .navButton {
 	width: 46%;
 	margin: 1%;
@@ -72,7 +95,7 @@
 #itemCategory {
 	padding: 3px;
 	margin-bottom: 2%;
-	font-size: 2vw;
+	font-size: 200%;
 	border-radius: 10px;
 	border: 1px solid grey;
 }
@@ -88,5 +111,5 @@
 }
 #itemPropertyList td {
 	padding: 3%;
-	font-size: 1.5vw;	
+	font-size: 150%;	
 }

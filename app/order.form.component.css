@@ -3,6 +3,7 @@
 	padding: 0;
 	margin: 0;
 	border: 1px solid black;
+	font-size: 100%;
 }
 #personal {
 	width: 49%;
@@ -15,26 +16,36 @@
 	display: inline-block;
 	vertical-align: top;
 }
+@media only screen and (max-width: 15cm) {
+	#personal {
+		width: 100%;
+	}
+	#details {
+		width: 100%;
+	}
+}
 .font {
-	font-size: 1.3vw;
+	font-size: 130%;
 }	
-
-.field {
-	padding: 1%;
+.field {	
+	padding: 2px;
+}
+.field span {
+	vertical-align: top;
+	width: 49%;
+	display: inline-block;
 }
 .field input {
-	width: 50%;
-	float: right;
+	width: 49%;
 }
 .field textarea{
-	width: 50%;
-	float: right;
+	width: 49%;
 }
 #carriers {
 	border: 1px solid black;
 }
 #buttons button {
-	font-size: 1vw;
+	font-size: 100%;
 }
 #commentInput {
 	height: 3cm;
