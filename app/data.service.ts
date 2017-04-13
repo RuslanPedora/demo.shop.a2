@@ -18,6 +18,8 @@ import { Carrier }      from './carrier';
 @Injectable()
 //-----------------------------------------------------------------------------
 export class DataService {
+	private pixelPercm: number = 0;
+	private hideFilterWidth = 15;
 	private itemKeyPrefix: string     = '_I';
 	private itemListKeyPrefix: string = '_IL';
 	private propertyTablePrefix: string = '_PT';
@@ -45,9 +47,22 @@ export class DataService {
 	//-----------------------------------------------------------------------------
 	constructor( private http: Http,
 				 private localStorageService: LocalStorageService ) {
+		let scaleElemnt: any;
+		let parent: any;
+
 		this.shoppingCartEventSource   = this.shoppingCartEventEmitter.asObservable();
 		this.itemListEventSource       = this.itemListEventEmitter.asObservable();
 		this.categoryEventSource       = this.categoryEventEmitter.asObservable();
+		scaleElemnt = document.getElementById('scale');
+		this.pixelPercm = scaleElemnt.offsetWidth / 5;
+		if ( this.pixelPercm == 0 )
+			this.pixelPercm = 1;
+		parent = document.getElementById( 'topic' );
+		parent.removeChild( scaleElemnt );
+    }
+    //----------------------------------------------------------------------------
+    screenWidthCm( pixelWidth: number ): number {
+    	return pixelWidth /  this.pixelPercm;
     }
     //----------------------------------------------------------------------------
     restoreFromLocalStorage(): void {

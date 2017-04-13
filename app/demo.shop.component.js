@@ -13,13 +13,31 @@ var router_1 = require('@angular/router');
 var data_service_1 = require('./data.service');
 var DemoShop = (function () {
     //-----------------------------------------------------------------------------
-    function DemoShop(dataService, router) {
+    function DemoShop(dataService, router, ngZone) {
         this.dataService = dataService;
         this.router = router;
+        this.ngZone = ngZone;
         this.eventValue = 0;
         this.nameMask = '';
-        this.showFilter = true;
+        this.hideFilterWidth = 17;
     }
+    //-----------------------------------------------------------------------------
+    DemoShop.prototype.ngOnInit = function () {
+        var _this = this;
+        this.shoppingCartListener = this.dataService.shoppingCartEventSource.subscribe(function (eventValue) {
+            return _this.eventValue = _this.dataService.getShoppingCartTotal();
+        });
+        this.dataService.restoreFromLocalStorage();
+        this.alignFilterVisivility();
+    };
+    //-----------------------------------------------------------------------------
+    DemoShop.prototype.onResize = function (event) {
+        this.alignFilterVisivility();
+    };
+    //-----------------------------------------------------------------------------
+    DemoShop.prototype.alignFilterVisivility = function () {
+        this.showFilter = (this.dataService.screenWidthCm(window.innerWidth) > this.hideFilterWidth);
+    };
     //-----------------------------------------------------------------------------
     DemoShop.prototype.toggelFilter = function () {
         this.showFilter = !this.showFilter;
@@ -42,14 +60,6 @@ var DemoShop = (function () {
             this.router.navigate(['/item-list'], { queryParams: JSON.parse(query) });
     };
     //-----------------------------------------------------------------------------
-    DemoShop.prototype.ngOnInit = function () {
-        var _this = this;
-        this.shoppingCartListener = this.dataService.shoppingCartEventSource.subscribe(function (eventValue) {
-            return _this.eventValue = _this.dataService.getShoppingCartTotal();
-        });
-        this.dataService.restoreFromLocalStorage();
-    };
-    //-----------------------------------------------------------------------------
     DemoShop.prototype.ngOnDestroy = function () {
         this.shoppingCartListener.unsubscribe();
     };
@@ -58,9 +68,12 @@ var DemoShop = (function () {
             moduleId: module.id,
             selector: 'demo-shop',
             templateUrl: './demo.shop.component.html',
-            styleUrls: ['./demo.shop.component.css']
+            styleUrls: ['./demo.shop.component.css'],
+            host: {
+                '(window:resize)': 'onResize($event)'
+            }
         }), 
-        __metadata('design:paramtypes', [data_service_1.DataService, router_1.Router])
+        __metadata('design:paramtypes', [data_service_1.DataService, router_1.Router, core_1.NgZone])
     ], DemoShop);
     return DemoShop;
 }());

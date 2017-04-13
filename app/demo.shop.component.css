@@ -131,7 +131,7 @@
 		height: 1cm;		
 	}	
 }	
-@media only screen and (max-width: 15cm) {
+@media only screen and (max-width: 17cm) {
 	#prefix {
 		display: none;
 	}	
@@ -151,7 +151,7 @@
 		z-index: 51;
 	}	
 }	
-@media only screen and (max-width: 8cm) {
+@media only screen and (max-width: 9cm) {
 	#header {
 		height: 0.7cm;	
 	}
@@ -162,9 +162,19 @@
 	}
 	#searchButtonSmall {
 		max-width: 0.7cm;
+		max-height: 0.7cm;
+	}	
+	#searchButtonSmall img {
+		max-width: 0.7cm;
+		max-height: 0.7cm;
 	}	
 	#filterToggle {
 		max-width: 0.7cm;
+		max-height: 0.7cm;
+	}	
+	#filterToggle img {
+		max-width: 0.7cm;
+		max-height: 0.7cm;
 	}	
 }	
 .maxHeightDiv {

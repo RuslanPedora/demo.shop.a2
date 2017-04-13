@@ -1,7 +1,7 @@
 <div id='itemContainer'>
 
 	<div id='panelContainer'>
-		<img id='drilldownPointer' src='app/panel.png'>
+		<img id='drilldownPointer' src='app/panel.ico'>
 		<div id='panel' class='glAltLightBgColor'>
 			<div class='option glClickableCursor glSmallBrRadius' 
 				 [ngClass]="{'glColorSelected':sortedByNameAsc}"
@@ -19,23 +19,25 @@
 			     [ngClass]="{'glColorSelected':sortedByPriceDes}"
 			     (click)='sortByPriceDes()'>Price ⇩
 			</div>
-			<div class='option glRightFloat glClickableCursor glSmallBrRadius' 
-			     [ngClass]="{'glColorSelected':shownAsList}"
-			     (click)='showAsList(true)'><img src='app/menu.png' class='iconImage'>
-			</div>
-			<div class='option glRightFloat glClickableCursor glSmallBrRadius' 
-				 [ngClass]="{'glColorSelected':!shownAsList}"
-			     (click)='showAsList(false)'><img src='app/layout.png' class='iconImage'>
-		    </div>
-			<div class='option glRightFloat glClickableCursor glSmallBrRadius'>
-				<label>Item on page: </label>
-				<select value={{itemPerPage}} #itemPrePageSelect (change)=changeItemsPerPage($event.target.value)>
-					<option value=25>25</option>
-					<option value=50>50</option>
-					<option value=100>100</option>
-					<option value=0>all</option>
-				</select>
-			</div>
+			<ng-container *ngIf='showListOption'>
+				<div class='option locRightFloat glClickableCursor glSmallBrRadius' 
+				     [ngClass]="{'glColorSelected':shownAsList}"
+				     (click)='showAsList(true)'><img src='app/menu.png' class='iconImage'>
+				</div>
+				<div class='option locRightFloat glClickableCursor glSmallBrRadius' 
+					 [ngClass]="{'glColorSelected':!shownAsList}"
+				     (click)='showAsList(false)'><img src='app/layout.png' class='iconImage'>
+			    </div>
+				<div class='option locRightFloat glClickableCursor glSmallBrRadius'>
+					<label>Item on page: </label>
+					<select value={{itemPerPage}} #itemPrePageSelect (change)=changeItemsPerPage($event.target.value)>
+						<option value=25>25</option>
+						<option value=50>50</option>
+						<option value=100>100</option>
+						<option value=0>all</option>
+					</select>
+				</div>
+			</ng-container>
 		</div>
 		<div class='pages' *ngIf='pages.length>0'>
 			<div class='glClickableCursor pageNumber glAltLightBgColor glSmallBrRadius glColorHover'
@@ -73,7 +75,7 @@
 						</ng-container>
 					</div>
 					<div class='itemLineButtonWrapper'>						
-						<button (click)=addItemToShoppingCart(item) class='glClickableCursor'>buy
+						<button (click)=addItemToShoppingCart(item) class='glClickableCursor glSmallBrRadius'>buy
 							<div>
 								<img src='app/buy-cart.png' class='iconImage'>
 							</div>	
@@ -100,7 +102,7 @@
 						</ng-container>
 					</div>	
 				</div>
-					<button (click)=addItemToShoppingCart(item) class='glRightFloat tileButton glClickableCursor'>
+					<button (click)=addItemToShoppingCart(item) class='glRightFloat tileButton glClickableCursor glSmallBrRadius'>
 						<div>
 							<img src='app/buy-cart.png'>
 						</div>

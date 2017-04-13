@@ -22,12 +22,12 @@
 					<img  *ngIf='eventValue==0' class='glColorHover glSmallBrRadius' src='app/empty-cart.png'>
 					<img  *ngIf='eventValue>0' class='glColorHover glSmallBrRadius' src='app/cart.png'>
 				</a>	
-			</div>		
-
+			</div>
 	</div>
 	<div id='content'>
 		<div id='filterDiv' class='maxHeightDiv glLeftFloat' *ngIf='showFilter'>
-			<filter (filterValueChangeEvent)='onFilterChange($event)'></filter>
+			<filter></filter>			
+			<!-- (filterValueChangeEvent)='onFilterChange($event)'			 -->
 		</div>	
 		<div id='imageDiv' class='maxHeightDiv glRightFloat'>
 			<img id='verticalImage' class='glSmallBrRadius' src='app/images/vertical.jpg'>

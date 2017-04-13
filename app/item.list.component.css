@@ -11,15 +11,22 @@
 	position: relative;
 }
 #panelContainer #drilldownPointer {
-	width: 0.7cm;
-	height: 0.7cm;
+	width: 1.2cm;
+	height: 1.2cm;
 	display: none;
 	top: 0%;
-	left: 45%;		
+	left: 44%;		
 	position: absolute;
+	transform: rotateZ(180deg);
 	z-index: 60;
 }
+.locRightFloat {
+	float: right;
+}
 @media only screen and (max-width: 15cm) {
+	.locRightFloat {
+		float: none;
+	}
 	#panelContainer:hover {
 		display: block;
 	}
@@ -43,6 +50,7 @@
 	}
 }	
 #panel {	
+	display: block;
 	border-bottom: 1px solid rgb( 200, 200, 200 );
 }
 .option {
@@ -217,6 +225,9 @@
 	}	
 }	
 @media only screen and (max-width: 12cm) {
+	#panel {
+		width: 100%;
+	}
 	.itemTileWrapper {
 		width: 100%;
 		padding-top: 100%;	

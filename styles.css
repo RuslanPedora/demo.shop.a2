@@ -22,6 +22,10 @@ body {
 	font-size: 150%;
 	overflow-y: auto;
 }
+#scale {
+	width: 5cm;
+	height: 1cm;
+}
 @media only screen and (max-width: 20cm) {
 	#innerTopic{	
 		font-size: 100%;

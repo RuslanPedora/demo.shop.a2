@@ -14,11 +14,13 @@ var angular_2_local_storage_1 = require('angular-2-local-storage');
 var data_service_1 = require('./data.service');
 var ItemListComponent = (function () {
     //-----------------------------------------------------------------------------
-    function ItemListComponent(router, activatedRoute, dataService, localStorageService) {
+    function ItemListComponent(router, activatedRoute, dataService, localStorageService, ngZone) {
+        var _this = this;
         this.router = router;
         this.activatedRoute = activatedRoute;
         this.dataService = dataService;
         this.localStorageService = localStorageService;
+        this.ngZone = ngZone;
         this.itemList = [];
         this.queryString = 'query string';
         this.sortedByNameAsc = true;
@@ -29,6 +31,9 @@ var ItemListComponent = (function () {
         this.pages = [];
         this.itemPerPage = 25;
         this.currentPage = -1;
+        this.hideListOptionWidth = 19;
+        this.alignListOPtion();
+        window.onresize = function (e) { return ngZone.run(function () { return _this.alignListOPtion(); }); };
     }
     //-----------------------------------------------------------------------------
     ItemListComponent.prototype.ngOnInit = function () {
@@ -60,6 +65,14 @@ var ItemListComponent = (function () {
                 _this.getItems(_this.queryString);
             }
         });
+    };
+    //-----------------------------------------------------------------------------
+    ItemListComponent.prototype.alignListOPtion = function () {
+        this.showListOption = (this.dataService.screenWidthCm(window.innerWidth) > this.hideListOptionWidth);
+        if (!this.showListOption) {
+            this.showAsList(false);
+            this.changeItemsPerPage('25');
+        }
     };
     //----------------------------------------------------------------------------
     ItemListComponent.prototype.restoreFromLocalStorage = function () {
@@ -205,7 +218,7 @@ var ItemListComponent = (function () {
             templateUrl: './item.list.component.html',
             styleUrls: ['./item.list.component.css']
         }), 
-        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, data_service_1.DataService, angular_2_local_storage_1.LocalStorageService])
+        __metadata('design:paramtypes', [router_1.Router, router_1.ActivatedRoute, data_service_1.DataService, angular_2_local_storage_1.LocalStorageService, core_1.NgZone])
     ], ItemListComponent);
     return ItemListComponent;
 }());

@@ -1,5 +1,6 @@
 import { Component, 
-	     OnInit }         from '@angular/core';
+	     OnInit,
+	     NgZone }         from '@angular/core';
 import { Router, 
 	     Params, 
 	     ActivatedRoute } from '@angular/router';
@@ -31,11 +32,18 @@ export class ItemListComponent implements OnInit {
 	private currentPage: number = -1;
 	private firstElemntInc: number;
 	private lastElemntExc: number;
+	private showListOption: boolean;
+	private hideListOptionWidth: number = 19;
 	//-----------------------------------------------------------------------------
 	constructor(  private router: Router,
 			      private activatedRoute: ActivatedRoute,
 			      private dataService: DataService,
-			      private localStorageService: LocalStorageService ) {
+			      private localStorageService: LocalStorageService,
+			      private ngZone: NgZone ) {
+
+		this.alignListOPtion();
+
+		 window.onresize = ( e ) => ngZone.run ( () => this.alignListOPtion() );
 	}
 	//-----------------------------------------------------------------------------
 	ngOnInit() {
@@ -70,6 +78,14 @@ export class ItemListComponent implements OnInit {
 			}
 		);
 	}
+	//-----------------------------------------------------------------------------
+	alignListOPtion(): void {
+	 	this.showListOption = ( this.dataService.screenWidthCm( window.innerWidth ) > this.hideListOptionWidth );	 	
+	 	if( !this.showListOption ) {	 		
+	 		this.showAsList( false );
+	 		this.changeItemsPerPage( '25' )
+	 	}
+	}	
     //----------------------------------------------------------------------------
     restoreFromLocalStorage(): void {
     	let restoredValue: any;

@@ -19,6 +19,8 @@ var DataService = (function () {
     function DataService(http, localStorageService) {
         this.http = http;
         this.localStorageService = localStorageService;
+        this.pixelPercm = 0;
+        this.hideFilterWidth = 15;
         this.itemKeyPrefix = '_I';
         this.itemListKeyPrefix = '_IL';
         this.propertyTablePrefix = '_PT';
@@ -40,10 +42,22 @@ var DataService = (function () {
         //-----------------------------------------------------------------------------
         this.tempItemList = [];
         this.orderRows = [];
+        var scaleElemnt;
+        var parent;
         this.shoppingCartEventSource = this.shoppingCartEventEmitter.asObservable();
         this.itemListEventSource = this.itemListEventEmitter.asObservable();
         this.categoryEventSource = this.categoryEventEmitter.asObservable();
+        scaleElemnt = document.getElementById('scale');
+        this.pixelPercm = scaleElemnt.offsetWidth / 5;
+        if (this.pixelPercm == 0)
+            this.pixelPercm = 1;
+        parent = document.getElementById('topic');
+        parent.removeChild(scaleElemnt);
     }
+    //----------------------------------------------------------------------------
+    DataService.prototype.screenWidthCm = function (pixelWidth) {
+        return pixelWidth / this.pixelPercm;
+    };
     //----------------------------------------------------------------------------
     DataService.prototype.restoreFromLocalStorage = function () {
         var restoredValue;

@@ -1,6 +1,7 @@
 import { Component, 
 	     OnInit,
-         OnDestroy }    from '@angular/core';
+         OnDestroy,
+         NgZone }    from '@angular/core';
 import { Router }       from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -10,7 +11,10 @@ import { DataService }  from './data.service';
 	moduleId: module.id,
 	selector: 'demo-shop',
 	templateUrl: './demo.shop.component.html',
-	styleUrls: [ './demo.shop.component.css' ]
+	styleUrls: [ './demo.shop.component.css' ],
+	host: {
+	    '(window:resize)': 'onResize($event)'
+  	}	
 })
 //-----------------------------------------------------------------------------
 export class DemoShop implements OnInit, OnDestroy {
@@ -18,10 +22,30 @@ export class DemoShop implements OnInit, OnDestroy {
 	private eventValue: number = 0;
 	private shoppingCartListener: Subscription;
 	private nameMask: string = '';	
-	private showFilter: boolean = true;
+	private showFilter: boolean;
+	private hideFilterWidth = 17;
 	//-----------------------------------------------------------------------------
 	constructor( private dataService: DataService,
-	             private router: Router ) {
+	             private router: Router,
+	             private ngZone: NgZone ) {
+
+	}
+	//-----------------------------------------------------------------------------
+	ngOnInit() {
+		this.shoppingCartListener = this.dataService.shoppingCartEventSource.subscribe(
+			                        	  eventValue => 
+			                               this.eventValue = this.dataService.getShoppingCartTotal()
+			                             );
+		this.dataService.restoreFromLocalStorage();
+	 	this.alignFilterVisivility();
+	}
+	//-----------------------------------------------------------------------------
+	onResize( event: any ){
+    	this.alignFilterVisivility(); 
+   	}
+	//-----------------------------------------------------------------------------
+	alignFilterVisivility(): void {
+		this.showFilter = ( this.dataService.screenWidthCm( window.innerWidth ) > this.hideFilterWidth );
 	}
 	//-----------------------------------------------------------------------------
 	toggelFilter(): void {
@@ -44,14 +68,6 @@ export class DemoShop implements OnInit, OnDestroy {
 		else
 			this.router.navigate( [ '/item-list' ], { queryParams: JSON.parse( query ) } );
 	}	
-	//-----------------------------------------------------------------------------
-	ngOnInit() {
-		this.shoppingCartListener = this.dataService.shoppingCartEventSource.subscribe(
-			                        	  eventValue => 
-			                               this.eventValue = this.dataService.getShoppingCartTotal()
-			                             );
-		this.dataService.restoreFromLocalStorage();
-	}
 	//-----------------------------------------------------------------------------
 	ngOnDestroy() {
 		this.shoppingCartListener.unsubscribe();

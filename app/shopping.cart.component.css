@@ -10,9 +10,6 @@
 #shoppingCart .shoppingCell {
 	border: 1px solid rgb( 150, 150, 150 );	
 }
-#shoppingCart .bottomBorder {	
-	border-bottom: 1px dashed rgb( 150, 150, 150 );	
-}
 #shoppingCart table, #shoppingCart tr {
 	width: 100%;
 }
@@ -46,7 +43,8 @@
 	left: 0;
 	text-align: right;
 	position: absolute;
-	font-size: 100%;
+	font-size: 130%;
+	font-weight: bold; 
 }
 .orderImage {
 	max-width: 100%;
