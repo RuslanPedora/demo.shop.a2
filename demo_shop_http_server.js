@@ -351,7 +351,9 @@ function discountItemsResponse ( request, response ) {
             GROUP BY itemId\
           ) AS lastDiscountDates\
           ON discountItems.itemId = lastDiscountDates.itemId AND discountItems.startDate = lastDiscountDates.maxStartDate) AS discountTable\
-        ON id = discountTable.itemIdDisc';
+        ON id = discountTable.itemIdDisc\
+        ORDER BY discount DESC\
+        LIMIT 10';
 
       makeResponseOnDBData( querySQL, request, response );  
 }

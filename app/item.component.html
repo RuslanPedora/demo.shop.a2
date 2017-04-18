@@ -18,15 +18,15 @@
 					(-{{currentItem?.discount}}%)
 				</ng-container>
 			</div>
-			<button id='buyButton' class='glSmallBrRadius' (click)=addItemToShoppingCart()>buy
+			<button id='buyButton' class='glSmallBrRadius glClickableCursor' (click)=addItemToShoppingCart()>buy
 				<div>
 					<img src='app/buy-cart.png' class='iconImage'>
 				</div>
 			</button>
 		</div>
 		<br>
-		<button class='navButton' (click)='goBack()'>back...</button>
-		<button class='navButton' (click)='goToItemList()'>go to item list</button>
+		<button class='navButton glClickableCursor' (click)='goBack()'>back...</button>
+		<button class='navButton glClickableCursor' (click)='goToItemList()'>go to item list</button>
 		<hr>
 		<div id='itemCategory' class='glClickableCursor'
 		     (click)='goToCategory()'>

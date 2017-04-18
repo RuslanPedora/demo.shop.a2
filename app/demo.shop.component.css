@@ -180,6 +180,9 @@
 .maxHeightDiv {
 	height: 100%;
 }
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
 :host /deep/ .glClickableCursor {
 	cursor: pointer;
 }
@@ -221,4 +224,7 @@
 }
 :host /deep/ .glColorSelected {
 	background-color: #76D7C4;
+}
+:host /deep/ * {
+	font-family: Arial, Helvetica, sans-serif;
 }
