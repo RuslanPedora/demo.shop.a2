@@ -32,10 +32,10 @@ appExpress.get( "/available_properties", availablePropertiesResponse );
 
 appExpress.post( "/order", orderResponse );
 
-console.log( __dirname + '/app/images/' );
+
 appExpress.use( '/app/images/', express.static( __dirname + '\\app\\images' ) );
-//http://localhost:8081/app/images/ball.jpg
-//appExpress.use( express.static( __dirname + '/otherstatic' ) );
+appExpress.use( '/', express.static( __dirname + '\\' ) );
+appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
 
 server = appExpress.listen( 8081, function() {
     var host = server.address().host;
@@ -44,7 +44,7 @@ server = appExpress.listen( 8081, function() {
 });
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
-    response.sendFile( path.join( __dirname + "/" +  sourcePathName + '/index.html' ) );
+    response.sendFile( path.join( __dirname + '/index.html' ) );
     logRequest( request.url, 'index.html loaded' );
 }
 //-----------------------------------------------------------------------------

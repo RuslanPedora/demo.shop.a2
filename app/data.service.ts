@@ -19,7 +19,6 @@ import { Carrier }      from './carrier';
 //-----------------------------------------------------------------------------
 export class DataService {
 	private pixelPercm: number = 0;
-	private hideFilterWidth = 15;
 	private itemKeyPrefix: string     = '_I';
 	private itemListKeyPrefix: string = '_IL';
 	private propertyTablePrefix: string = '_PT';
@@ -70,6 +69,8 @@ export class DataService {
     	restoredValue = this.localStorageService.get( 'demoShopShoppingCart' );
     	try {
     		this.orderRows = JSON.parse( restoredValue );
+    		if( this.orderRows == null )
+    			this.orderRows = [];
     	}
     	catch( error ) {    		
     	}    	

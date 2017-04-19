@@ -20,7 +20,6 @@ var DataService = (function () {
         this.http = http;
         this.localStorageService = localStorageService;
         this.pixelPercm = 0;
-        this.hideFilterWidth = 15;
         this.itemKeyPrefix = '_I';
         this.itemListKeyPrefix = '_IL';
         this.propertyTablePrefix = '_PT';
@@ -64,6 +63,8 @@ var DataService = (function () {
         restoredValue = this.localStorageService.get('demoShopShoppingCart');
         try {
             this.orderRows = JSON.parse(restoredValue);
+            if (this.orderRows == null)
+                this.orderRows = [];
         }
         catch (error) {
         }
