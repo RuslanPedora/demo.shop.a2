@@ -37,6 +37,7 @@ appExpress.use( '/app/images/', express.static( __dirname + '\\app\\images' ) );
 appExpress.use( '/', express.static( __dirname + '\\' ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
 
+console.log( 'static folder :' + __dirname + '\\app\\images' );
 console.log( 'db url:' + process.env.dburl );
 
 server = appExpress.listen( 8081, function() {
@@ -46,6 +47,7 @@ server = appExpress.listen( 8081, function() {
 });
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
+    console.log( 'try to sent index html' );
     response.sendFile( path.join( __dirname + '/index.html' ) );
     logRequest( request.url, 'index.html loaded' );
 }
