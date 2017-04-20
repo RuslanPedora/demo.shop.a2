@@ -35,10 +35,11 @@ appExpress.post( "/order", orderResponse );
 
 
 appExpress.use( '/app/images/', express.static( __dirname + '\\app\\images' ) );
-appExpress.use( '/', express.static( __dirname + '\\' ) );
+appExpress.use( express.static( __dirname ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
 
 console.log( 'static folder :' + __dirname + '\\app\\images' );
+console.log( 'basic folder :' + __dirname );
 console.log( 'db url:' + process.env.dburl );
 console.log( 'heroku port: ' + process.env.PORT );
 
