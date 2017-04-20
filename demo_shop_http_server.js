@@ -2,6 +2,7 @@ const ITEM_TABLE_PREFIX = '_IT';
 const PROPERTY_TABLE_PREFIX = '_PT';
 
 var path       = require( 'path' );
+var fs         = require( 'fs' );
 var express    = require( 'express' );
 var cors       = require('cors');
 var bodyParser = require('body-parser');
@@ -39,6 +40,10 @@ appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' )
 
 console.log( 'static folder :' + __dirname + '\\app\\images' );
 console.log( 'db url:' + process.env.dburl );
+
+if ( fs.existsSync( __dirname + '/index.html' ) ) {
+    console.log( 'index.html exists' );
+}
 
 server = appExpress.listen( 8081, function() {
     var host = server.address().host;
