@@ -1,10 +1,17 @@
 {
-  "name": "angular2-quickstart",
+  "name": "angular2-demo-shop",
   "version": "1.0.0",
   "description": "QuickStart package.json from the documentation, supplemented with testing support",
   "keywords": [],
-  "author": "",
+  "author": "Ruslan Pedora",
   "license": "ISC",
+  "main": "demo_shop_http_server.js",
+  "engines": {
+    "node": "6.9.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@angular/common": "2.0.0-rc.6",
     "@angular/compiler": "2.0.0-rc.6",
