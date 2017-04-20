@@ -53,7 +53,18 @@ server = appExpress.listen( 8081, function() {
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
     console.log( 'try to sent index html' );
-    response.sendFile( path.join( __dirname + '/index.html' ) );
+
+    fs.readFile( __dirname + '/index.html', function ( err, html ) {
+        if (err) {
+            logRequest( err ); 
+        }       
+        
+        response.writeHeader(200, {"Content-Type": "text/html"});  
+        response.write(html);  
+        response.end();  
+    });
+
+    //response.sendFile( path.join( __dirname + '/index.html' ) );
     logRequest( request.url, 'index.html loaded' );
 }
 //-----------------------------------------------------------------------------
