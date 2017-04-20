@@ -13,12 +13,21 @@ var nodemailer = require('nodemailer');
 var sourcePathName  = 'src';
 var DEBUG_MODE = true;
 
-const connetionData = {
-                        host     : 'localhost',
-                        database : 'trial_shop_db',                                             
-                        user     : 'root',
-                        multipleStatements: true
-                      } ;
+var connetionData = {
+                      host     : 'localhost',
+                      database : 'trial_shop_db',
+                      user     : 'root',
+                      multipleStatements: true
+                    };
+
+if ( process.env.DATABASE_URL ) {
+  connetionData.host     = process.env.DATABASE_URL;
+  connetionData.database = process.env.DATABASE_DB_NAME;
+  connetionData.user     = process.env.DATABASE_USER;
+  connetionData.password = process.env.DATABASE_PASSWORD;
+  console.log( 'Database connection parameters changed to : ' + JSON.stringify( connetionData ) );
+}
+
 
 appExpress.use( cors() );
 
