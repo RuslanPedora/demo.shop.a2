@@ -46,7 +46,7 @@ if ( fs.existsSync( __dirname + '/index.html' ) ) {
     console.log( 'index.html exists' );
 }
 
-server = appExpress.listen( 8081, function() {
+server = appExpress.listen( process.env.PORT || 8081, function() {
     var host = server.address().host;
     var port = server.address().port;
     console.log( "Server has been started: " + host + "-" + port );
