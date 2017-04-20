@@ -37,6 +37,8 @@ appExpress.use( '/app/images/', express.static( __dirname + '\\app\\images' ) );
 appExpress.use( '/', express.static( __dirname + '\\' ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
 
+console.log( 'db url:' + process.env.dburl );
+
 server = appExpress.listen( 8081, function() {
     var host = server.address().host;
     var port = server.address().port;
