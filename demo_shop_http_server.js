@@ -96,7 +96,7 @@ function orderResponse( request, response ) {
         }
         catch ( error )  {
           logRequest( error );
-          serverSideError( request, response )
+          //serverSideError( request, response )
         }
 
         querySQL = '\
@@ -145,7 +145,7 @@ function sendOrderEmail( orderNumber, orderData ) {
     };
 
     messageText = 'Hello ' + orderData.firstName + ' ' + orderData.secondName +
-                  '<br><br>You have placed an order # ' + orderNumber + ' on our site demo.shop.a2, but this is not true e-shop,' +
+                  '<br><br>You have placed an order # ' + orderNumber + ' on our site demo-shop-a2.herokuapp.com, but this is not true e-shop,' +
                   ' our shop assistant will not contact you.<br>' + 
                   'This is demo purpose mail only<br><br>';
     messageHtml = '<p>' + messageText;
@@ -206,7 +206,7 @@ function sendOrderEmail( orderNumber, orderData ) {
     messageHtml += '<br>'
 
 
-    messageHtml += '<br><br><p>Kind regards.<br><br>demo.shop.a2 team.</p>';
+    messageHtml += '<br><br><p>Kind regards.<br><br>demo-shop-a2.herokuapp.com team.</p>';
 
     mailOptions.text = messageText;
     mailOptions.html = messageHtml;
@@ -318,7 +318,7 @@ function availablePropertiesResponse( request, response ) {
     }
     catch ( error )  {
       logRequest( error );
-      serverSideError( request, response )
+      //serverSideError( request, response )
     }
 
 
@@ -338,7 +338,7 @@ function makeResponseOnDBData( querySQL, request, response ) {
                         if (error) { 
                           logRequest( 'db connetion failed: ' + querySQL );
                           logRequest( 'Error: ' + error );
-                          serverSideError( request, response )
+                          //serverSideError( request, response )
                           return;
                         }
                         response.writeHead( 200, {'Content-Type': 'text/plain' } );
@@ -443,7 +443,7 @@ function itemPropertiesResponse( request, response ) {
     }
     catch ( error )  {
       logRequest( error );
-      serverSideError( request, response )
+      //serverSideError( request, response )
     }    
     logRequest( request.url, 'condition string: ' + conditionString);    
     querySQL = querySQL.replace( new RegExp( 'conditionInjection', 'g' ), conditionString );
@@ -474,7 +474,7 @@ function itemImagesResponse( request, response ) {
     }
     catch ( error )  {
       logRequest( error );
-      serverSideError( request, response )
+      //serverSideError( request, response )
     }
 
     logRequest( request.url, 'condition string: ' + conditionString);    
@@ -574,7 +574,7 @@ function itemsResponse( request, response ) {
     }
     catch ( error )  {
       logRequest( error );
-      serverSideError( request, response )
+      //serverSideError( request, response )
     }
 
     querySQL = querySQL.replace( 'conditionInjection', conditionInjection );

@@ -9,10 +9,10 @@
   "engines": {
     "node": "6.9.5"
   },
-  "scripts": {
+"scripts": {
     "start": "demo_shop_http_server.js"
   },
-  "dependencies": {
+"dependencies": {
     "@angular/common": "2.0.0-rc.6",
     "@angular/compiler": "2.0.0-rc.6",
     "@angular/core": "2.0.0-rc.6",

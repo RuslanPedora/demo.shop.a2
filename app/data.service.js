@@ -55,7 +55,6 @@ var DataService = (function () {
         this.hostUrl = 'http://localhost:8081';
         if (window.location.hostname.indexOf('localhost') < 0)
             this.hostUrl = window.location.origin;
-        alert('host URL: ' + this.hostUrl);
         this.itemsUrl = this.hostUrl + '/items';
         this.orderUrl = this.hostUrl + '/order';
         this.discountItemsUrl = this.hostUrl + '/discount_items';
