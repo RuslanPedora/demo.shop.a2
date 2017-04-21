@@ -10,7 +10,7 @@
     "node": "6.9.5"
   },
   "scripts": {
-    "start": "demo_shop_http_server.js",
+    "start": "demo_shop_http_server.js"
   },
   "dependencies": {
     "@angular/common": "2.0.0-rc.6",
