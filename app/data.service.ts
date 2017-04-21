@@ -24,15 +24,15 @@ export class DataService {
 	private propertyTablePrefix: string = '_PT';
 	private itemTablePrefix: string = '_IT';
 	private hostUrl: string = 'http://localhost:8081';
-	private itemsUrl: string               = this.hostUrl + '/items';
-	private orderUrl: string               = this.hostUrl + '/order';
-	private discountItemsUrl: string       = this.hostUrl + '/discount_items';
-	private itemImagesUrl: string          = this.hostUrl + '/item_images';
-	private categoryHierarchyUrl: string   = this.hostUrl + '/category_tree';
-	private itemPropertiesUrl: string      = this.hostUrl + '/item_properties';
-	private availablePropertiesUrl: string = this.hostUrl + '/available_properties';
-	private carriersUrl: string            = this.hostUrl + '/carriers';
-	private imagePath: string              = this.hostUrl + '/app/images/';
+	private itemsUrl: string = '';
+	private orderUrl: string = '';
+	private discountItemsUrl: string = '';
+	private itemImagesUrl: string = '';
+	private categoryHierarchyUrl: string = '';
+	private itemPropertiesUrl: string = '';
+	private availablePropertiesUrl: string = '';
+	private carriersUrl: string = '';
+	private imagePath: string = '';
 	//-----------------------------------------------------------------------------
 	private shoppingCartEventEmitter = new Subject<string>(); 
 	shoppingCartEventSource: Observable<string>;
@@ -58,6 +58,22 @@ export class DataService {
 			this.pixelPercm = 1;
 		parent = document.getElementById( 'topic' );
 		parent.removeChild( scaleElemnt );
+
+		this.hostUrl = 'http://localhost:8081';
+		if ( window.location.hostname.indexOf( 'localhost' ) < 0 )
+			this.hostUrl = window.location.origin;
+
+		alert( 'host URL: ' + this.hostUrl )	;
+
+		this.itemsUrl               = this.hostUrl + '/items';
+		this.orderUrl               = this.hostUrl + '/order';
+		this.discountItemsUrl       = this.hostUrl + '/discount_items';
+		this.itemImagesUrl          = this.hostUrl + '/item_images';
+		this.categoryHierarchyUrl   = this.hostUrl + '/category_tree';
+		this.itemPropertiesUrl      = this.hostUrl + '/item_properties';
+		this.availablePropertiesUrl = this.hostUrl + '/available_properties';
+		this.carriersUrl            = this.hostUrl + '/carriers';
+		this.imagePath              = this.hostUrl + '/app/images/';		
     }
     //----------------------------------------------------------------------------
     screenWidthCm( pixelWidth: number ): number {

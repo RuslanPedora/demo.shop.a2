@@ -25,15 +25,15 @@ var DataService = (function () {
         this.propertyTablePrefix = '_PT';
         this.itemTablePrefix = '_IT';
         this.hostUrl = 'http://localhost:8081';
-        this.itemsUrl = this.hostUrl + '/items';
-        this.orderUrl = this.hostUrl + '/order';
-        this.discountItemsUrl = this.hostUrl + '/discount_items';
-        this.itemImagesUrl = this.hostUrl + '/item_images';
-        this.categoryHierarchyUrl = this.hostUrl + '/category_tree';
-        this.itemPropertiesUrl = this.hostUrl + '/item_properties';
-        this.availablePropertiesUrl = this.hostUrl + '/available_properties';
-        this.carriersUrl = this.hostUrl + '/carriers';
-        this.imagePath = this.hostUrl + '/app/images/';
+        this.itemsUrl = '';
+        this.orderUrl = '';
+        this.discountItemsUrl = '';
+        this.itemImagesUrl = '';
+        this.categoryHierarchyUrl = '';
+        this.itemPropertiesUrl = '';
+        this.availablePropertiesUrl = '';
+        this.carriersUrl = '';
+        this.imagePath = '';
         //-----------------------------------------------------------------------------
         this.shoppingCartEventEmitter = new Subject_1.Subject();
         this.itemListEventEmitter = new Subject_1.Subject();
@@ -52,6 +52,19 @@ var DataService = (function () {
             this.pixelPercm = 1;
         parent = document.getElementById('topic');
         parent.removeChild(scaleElemnt);
+        this.hostUrl = 'http://localhost:8081';
+        if (window.location.hostname.indexOf('localhost') < 0)
+            this.hostUrl = window.location.origin;
+        alert('host URL: ' + this.hostUrl);
+        this.itemsUrl = this.hostUrl + '/items';
+        this.orderUrl = this.hostUrl + '/order';
+        this.discountItemsUrl = this.hostUrl + '/discount_items';
+        this.itemImagesUrl = this.hostUrl + '/item_images';
+        this.categoryHierarchyUrl = this.hostUrl + '/category_tree';
+        this.itemPropertiesUrl = this.hostUrl + '/item_properties';
+        this.availablePropertiesUrl = this.hostUrl + '/available_properties';
+        this.carriersUrl = this.hostUrl + '/carriers';
+        this.imagePath = this.hostUrl + '/app/images/';
     }
     //----------------------------------------------------------------------------
     DataService.prototype.screenWidthCm = function (pixelWidth) {
