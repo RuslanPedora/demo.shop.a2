@@ -17,8 +17,7 @@ var connetionData = {
                       host     : 'localhost',
                       database : 'trial_shop_db',
                       user     : 'root',
-                      multipleStatements: true,
-                      acquireTimeout: 10000000
+                      multipleStatements: true
                     };
 
 if ( process.env.DATABASE_URL ) {
@@ -346,7 +345,9 @@ function makeResponseOnDBData( querySQL, request, response ) {
                         response.end( responseStr );
                         logRequest( request.url, 'itmes request processed' );
                     });
-    connection.end();
+    connection.end( function( err ) {
+      console.log( 'connection ended with error: ' + err );
+    });
     logRequest( request.url, 'connection is closed' );
 }
 //-----------------------------------------------------------------------------
