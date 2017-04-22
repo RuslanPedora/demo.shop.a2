@@ -18,7 +18,7 @@ var connetionData = {
                       database : 'trial_shop_db',
                       user     : 'root',
                       multipleStatements: true,
-                      acquireTimeout: 100000
+                      acquireTimeout: 10000000
                     };
 
 if ( process.env.DATABASE_URL ) {
