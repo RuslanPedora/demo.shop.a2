@@ -17,7 +17,7 @@ var connetionData = {
                       host     : 'localhost',
                       database : 'trial_shop_db',
                       user     : 'root',
-                      multipleStatements: true
+                      multipleStatements: true,
                       acquireTimeout: 100000
                     };
 
@@ -60,8 +60,6 @@ server = appExpress.listen( process.env.PORT || 8081, function() {
     var port = server.address().port;
     console.log( "Server has been started: " + host + "-" + port );
 });
-
-console.log( server.timeout );
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
     console.log( 'try to sent index html' );
