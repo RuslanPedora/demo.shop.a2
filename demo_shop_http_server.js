@@ -122,7 +122,9 @@ function orderResponse( request, response ) {
                             response.end( responseStr );
                             logRequest( request.url, 'itmes request processed' );
                         });
-        connection.end();
+        connection.end( function( err ) {
+          console.log( 'connection ended with error: ' + err );
+        });
     })
 }
 //-----------------------------------------------------------------------------
@@ -407,7 +409,8 @@ function categoryTreeResponse( request, response ) {
       INNER JOIN categories AS categories \
       ON hierarchy.categoryId = categories.id\
       LEFT JOIN categories AS parents \
-      ON hierarchy.parentId = parents.id';
+      ON hierarchy.parentId = parents.id\
+      ORDER BY parents.name, categories.name';
 
     makeResponseOnDBData( querySQL, request, response );
 }
@@ -503,8 +506,8 @@ function itemsResponse( request, response ) {
     querySQL = '\
       SELECT * FROM\
         ( SELECT items.id as id, items.name as name, items.mainImage as mainImage,\
-                 price AS price, discount AS discount,\
-                 CAST( price * ( 1 - IFNULL( discountTable.discount, 0 ) / 100 ) AS DECIMAL(20,2) ) AS discountPrice,\
+                 IFNULL( price, 0 ) AS price, discount AS discount,\
+                 CAST( IFNULL( price, 0 ) * ( 1 - IFNULL( discountTable.discount, 0 ) / 100 ) AS DECIMAL(20,2) ) AS discountPrice,\
                  items.categoryId, categories.name as category\
         FROM items as items\
         \
