@@ -18,6 +18,7 @@ var connetionData = {
                       database : 'trial_shop_db',
                       user     : 'root',
                       multipleStatements: true
+                      acquireTimeout: 100000
                     };
 
 if ( process.env.DATABASE_URL ) {
@@ -27,7 +28,6 @@ if ( process.env.DATABASE_URL ) {
   connetionData.password = process.env.DATABASE_PASSWORD;
   console.log( 'Database connection parameters changed to : ' + JSON.stringify( connetionData ) );
 }
-
 
 appExpress.use( cors() );
 
@@ -60,6 +60,8 @@ server = appExpress.listen( process.env.PORT || 8081, function() {
     var port = server.address().port;
     console.log( "Server has been started: " + host + "-" + port );
 });
+
+console.log( server.timeout );
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
     console.log( 'try to sent index html' );
