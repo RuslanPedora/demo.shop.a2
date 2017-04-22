@@ -339,19 +339,15 @@ function makeResponseOnDBData( querySQL, request, response ) {
                           logRequest( 'db connetion failed: ' + querySQL );
                           logRequest( 'Error: ' + error );
                           //serverSideError( request, response )
-                          connection.end();
-                          logRequest( request.url, 'connection is closed' );
                           return;
                         }
                         response.writeHead( 200, {'Content-Type': 'text/plain' } );
                         responseStr = JSON.stringify( results );                                                     
                         response.end( responseStr );
-                        connection.end();
-                        logRequest( request.url, 'connection is closed' );
                         logRequest( request.url, 'itmes request processed' );
                     });
-    // connection.end();
-    // logRequest( request.url, 'connection is closed' );
+    connection.end();
+    logRequest( request.url, 'connection is closed' );
 }
 //-----------------------------------------------------------------------------
 function serverSideError( request, response ) {
