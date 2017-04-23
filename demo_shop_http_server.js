@@ -43,8 +43,9 @@ appExpress.post( "/order", orderResponse );
 
 
 appExpress.use( '/app/images/', express.static( __dirname + '\\app\\images' ) );
-appExpress.use( express.static( __dirname ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
+appExpress.use( '/', express.static( __dirname  + '\\' ) );
+appExpress.use( express.static( __dirname ) );
 
 console.log( 'static folder :' + __dirname + '\\app\\images' );
 console.log( 'basic folder :' + __dirname );
@@ -316,18 +317,19 @@ function availablePropertiesResponse( request, response ) {
       selectedNotCondition = selectedCondition.replace( new RegExp( 'value =', 'g' ), 'value <>' );
       selectedNotCondition = selectedNotCondition.replace( new RegExp( 'OR', 'g' ), 'AND' );
 
-    }
+      selectedNotCondition += ' AND itemId IN ( SELECT id FROM items WHERE categoryId = ' + queryObject._ITcategoryId + ' ) ';
+        
+    }    
     catch ( error )  {
       logRequest( error );
       //serverSideError( request, response )
     }
 
-
-    querySQL = querySQL.replace( new RegExp( 'categoryConditionInjection', 'g' ), categoryConditionInjection );
     querySQL = querySQL.replace( new RegExp( 'propertyConditionInjection', 'g' ), propertyConditionInjection );
     querySQL = querySQL.replace( new RegExp( 'propertyNumber', 'g' ), '' + propertyNumber );
     querySQL = querySQL.replace( new RegExp( 'selectedCondition', 'g' ), selectedCondition );
     querySQL = querySQL.replace( new RegExp( 'selectedNotCondition', 'g' ), selectedNotCondition );
+    querySQL = querySQL.replace( new RegExp( 'categoryConditionInjection', 'g' ), categoryConditionInjection );
   
     makeResponseOnDBData( querySQL, request, response );
 }

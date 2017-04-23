@@ -16,6 +16,7 @@
 .categoryLink {
 	padding: 3%;
 	font-size: 100%;
+	text-transform: capitalize;
 }
 .subMenuMarker {
 	display: inline;

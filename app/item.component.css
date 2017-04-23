@@ -68,7 +68,7 @@
 }
 #itemName, #itemPrice {
 	text-align: center;
-	font-size: 3vw; 
+	font-size: 150%; 
 }
 #buyButton {
 	width: 23%;

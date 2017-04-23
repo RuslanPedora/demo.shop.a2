@@ -12,7 +12,7 @@
 	<div id='propertiesDiv' *ngIf='!showAsCategoryTree'>
 		Selected properties:
 		<div *ngFor='let property of selectedProperties' class='propertySelectedDiv glMediumBgColor'>
-			{{property.itemProperty.name}}:
+			<b>{{property.itemProperty.name}}:</b>
 			<div *ngFor='let value of property.itemPropertyList' 
 			     class='valueDiv glSmallBrRadius glClickableCursor glColorHover'
 			     (click)='deleteToSelectedProperties(value)'>
@@ -36,7 +36,7 @@
 		<hr>
 		Available properties:
 		<div *ngFor='let property of availableProperties' class='propertyAvailableDiv glMediumBgColor'>
-			{{property.itemProperty.name}}:
+			<b>{{property.itemProperty.name}}:</b>
 			<div *ngFor='let value of property.itemPropertyList' 
 			     class='valueDiv glSmallBrRadius glClickableCursor glColorHover'
 			     (click)='addToSelectedProperties(value)'>

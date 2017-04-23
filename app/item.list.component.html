@@ -96,19 +96,17 @@
 						{{item.name}}
 					</div>
 					<div class='tileBottomBlock'>
-						{{item.discountPrice.toFixed(2)}}$
+						<span>{{item.discountPrice.toFixed(2)}}$</span>
 						<ng-container *ngIf='item.discount>0'>
 							<del>({{item.price.toFixed(2)}}$)</del>
 						</ng-container>
 					</div>	
 				</div>
-					<button (click)=addItemToShoppingCart(item) class='glRightFloat tileButton glClickableCursor glSmallBrRadius'>
-						<div>
-							<img src='app/buy-cart.png'>
-						</div>
-					</button>				
-
-
+				<button (click)=addItemToShoppingCart(item) class='glRightFloat tileButton glClickableCursor glSmallBrRadius'>
+					<div>
+						<img src='app/buy-cart.png'>
+					</div>
+				</button>
 			</div>
 		</div>
 	</div>	
