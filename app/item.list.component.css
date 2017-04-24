@@ -140,12 +140,13 @@
 	height: 100%;	
 	display: inline-block;
 	vertical-align: top;
+	margin-left: -4px;
 	margin-right: -4px;
 }
 .itemLineNameWrapper {
 	width: 100%;
 	height: 100%;
-	font-size: 150%;
+	font-size: 100%;
 	padding-left: 1%;
 }
 .itemLinePriceDiv{
@@ -172,7 +173,7 @@
 	height: 50%;
 	top: 25%;
 	left: 10%;	
-	font-size: 150%;
+	font-size: 100%;
 	position: absolute;
 }
 .itemLineButtonWrapper div {
@@ -271,6 +272,7 @@
 .tileNameBlock{
 	padding: 1%;
 	overflow:hidden;
+	font-size: 100%;
 }
 .tileBottomBlock {
 	width: 100%;	
@@ -294,6 +296,8 @@
 	right: 0%;	
 	height: 100%;
 	position: absolute;
+	background-color: #E8F8F5;
+	z-index: 1;
 }	
 .tileButton img {
 	right: 0%;
