@@ -76,6 +76,7 @@
 #content{
 	height: 95%;
 	position: relative;
+	background-color: #E8F8F5;
 }
 #filterDiv{
 	max-width: 5cm;

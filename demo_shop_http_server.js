@@ -62,7 +62,6 @@ server = appExpress.listen( process.env.PORT || 8081, function() {
 });
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
-    console.log( 'try to sent index html' );
 
     fs.readFile( __dirname + '/index.html', function ( err, html ) {
         if (err) {
