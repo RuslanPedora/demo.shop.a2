@@ -31,6 +31,12 @@ if ( process.env.DATABASE_URL ) {
 appExpress.use( cors() );
 
 appExpress.get( "/", initResponse );
+appExpress.get( "/slider", initResponse );
+appExpress.get( "/shopping-cart", initResponse );
+appExpress.get( "/order-form", initResponse );
+appExpress.get( "/item-list", initResponse );
+appExpress.get( "/item", initResponse );
+
 appExpress.get( "/items", itemsResponse );
 appExpress.get( "/carriers", carriersResponse );
 appExpress.get( "/discount_items", discountItemsResponse );
@@ -56,7 +62,7 @@ if ( fs.existsSync( __dirname + '/index.html' ) ) {
 }
 
 server = appExpress.listen( process.env.PORT || 8081, function() {
-    var host = server.address().host;
+    var host = server.address().address;
     var port = server.address().port;
     console.log( "Server has been started: " + host + "-" + port );
 });
