@@ -84,6 +84,7 @@
 }
 #imageDiv{
 	width: 7cm;
+	display: none;
 }
 #verticalImage {
 	width: 100%;
