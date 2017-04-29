@@ -38,7 +38,17 @@ var ItemComponent = (function () {
     };
     //-----------------------------------------------------------------------------
     ItemComponent.prototype.changeImage = function (newImage) {
-        this.mainImage = newImage;
+        var imageElelemt;
+        var dataObject;
+        if (this.mainImage == newImage)
+            return;
+        imageElelemt = document.getElementById('mainImage');
+        imageElelemt.style.opacity = 0;
+        dataObject = this;
+        setTimeout(function () {
+            dataObject.mainImage = newImage;
+            imageElelemt.style.opacity = 1;
+        }, 1000);
     };
     //-----------------------------------------------------------------------------
     ItemComponent.prototype.goBack = function () {

@@ -1,8 +1,11 @@
-#mainBlock {
+#mainBlock {	
 	width: 100%;	
+	max-width: 35cm;
 	height: 96%;	
 	padding: 0;
 	margin: 0;
+	display: inline-block;
+	text-align: initial;
 }
 #header {
 	height: 1.2cm;
@@ -82,21 +85,11 @@
 	max-width: 5cm;
 	width: 100%;
 }
-#imageDiv{
-	width: 7cm;
-	display: none;
-}
-#verticalImage {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
 #outlet {	
 	height: 100%;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	background-color: rgb( 250, 255, 250 );
+	background: linear-gradient( rgb(142,219,214), white);
 }
 @media only screen and (max-width: 32cm) {
 	#imageDiv{	

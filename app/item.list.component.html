@@ -1,5 +1,4 @@
 <div id='itemContainer'>
-
 	<div id='panelContainer'>
 		<img id='drilldownPointer' src='app/panel.ico'>
 		<div id='panel' class='glAltLightBgColor'>
@@ -55,6 +54,11 @@
 			</div>		
 		</div>
 	</div>
+	<span *ngIf='itemList.length==0'>
+		Unfortunately nothing was find according to your criteria 
+		<img src='app/sad-smile.png' class='iconImage'>
+		please change your selection
+	</span>
 	<div id='itemList' *ngIf='shownAsList'>
 		<div *ngFor="let item of itemList| slice:firstElemntInc:lastElemntExc" class='itemLine glSmallBrRadius'>
 			<div class='itemLineWrapper'>

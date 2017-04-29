@@ -10,7 +10,7 @@
 		<category-tree [categoryList]='categoryTree'></category-tree>
 	</div>
 	<div id='propertiesDiv' *ngIf='!showAsCategoryTree'>
-		Selected properties:
+		<span>Selected properties:</span>
 		<div *ngFor='let property of selectedProperties' class='propertySelectedDiv glMediumBgColor'>
 			<b>{{property.itemProperty.name}}:</b>
 			<div *ngFor='let value of property.itemPropertyList' 
@@ -34,7 +34,7 @@
 			</td>
 		</table>		
 		<hr>
-		Available properties:
+		<span>Available properties:</span>
 		<div *ngFor='let property of availableProperties' class='propertyAvailableDiv glMediumBgColor'>
 			<b>{{property.itemProperty.name}}:</b>
 			<div *ngFor='let value of property.itemPropertyList' 

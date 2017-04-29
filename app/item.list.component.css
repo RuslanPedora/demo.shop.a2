@@ -7,6 +7,12 @@
 	background-color: #E8F8F5;		
 	color: black;
 }
+#itemContainer span {
+	padding: 5px;	
+}
+#itemContainer span img {
+	height: 0.7cm;
+}	
 #panelContainer {
 	position: relative;
 }
@@ -120,20 +126,20 @@
 	border: 1px solid rgb( 50, 50, 50);
 }
 .lineImageBig {	
-	width: 300%;
-	max-height: 300%;	
-	border: 1px solid rgb( 50, 50, 50);
+	width: 0%;
+	/*max-height: 300%;		*/
 	position: relative;
 	top: 0%;
-	left: 0%;
-	display: none;
+	left: 0%;	
 	z-index: 20;
+	transition: width 1s, height 1s;
 }
 .itemLineImageDiv:hover .lineImage {
 	display: none;
 }
 .itemLineImageDiv:hover .lineImageBig {
-	display: initial;
+	width: 170%;
+	border: 1px solid rgb( 50, 50, 50);
 }
 .itemLineNameDiv {
 	width: 64%;
@@ -160,6 +166,7 @@
 	height: 50%;
 	padding-top: 10%;
 	font-size: 150%;
+	overflow: hidden;
 	text-align: center;
 }
 .itemLineButtonWrapper{

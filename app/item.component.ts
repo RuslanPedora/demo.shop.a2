@@ -44,7 +44,21 @@ export class ItemComponent implements OnInit {
 	}
 	//-----------------------------------------------------------------------------
 	changeImage( newImage: string ): void {
-		this.mainImage = newImage;
+		let imageElelemt: any;
+		let dataObject: any;
+
+		if( this.mainImage == newImage )
+			return;
+
+		imageElelemt = document.getElementById( 'mainImage' );
+		imageElelemt.style.opacity = 0;
+		dataObject = this;
+
+		setTimeout( function() { dataObject.mainImage = newImage;
+								 imageElelemt.style.opacity = 1;
+							   }, 
+			        1000
+			      );
 	}
 	//-----------------------------------------------------------------------------
 	goBack(): void {
