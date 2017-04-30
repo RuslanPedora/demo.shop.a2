@@ -50,7 +50,8 @@ appExpress.post( "/order", orderResponse );
 appExpress.use( '/images/', express.static( __dirname + '\\src\\images' ) );
 appExpress.use( '/icons-logos/', express.static( __dirname + '\\src\\icons-logos' ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
-appExpress.use( '/', express.static( __dirname + '\\src' ) );
+appExpress.use( '/', express.static( path.join( __dirname, 'src' ) ) );
+appExpress.use( '/src', express.static( path.join( __dirname, 'src' ) ) );
 //appExpress.use( express.static( __dirname + '\\src' ) );
 
 console.log( 'static folder images:' + __dirname + '\\src\\images' );
