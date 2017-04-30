@@ -1,0 +1,30 @@
+<!doctype html>
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="keywords" content="HTML,CSS,JavaScript,Angular2,TypeScript">
+    <meta name="author" content="Ruslan Pedora">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Angular 2 demo project</title>    
+	<link rel='stylesheet' href='styles.css'>    
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import( 'main.js' ).catch( function( err ) { console.error( err ); } );
+    </script>
+</head>
+<body>
+    <demo-shop>Loadding demo shop...</demo-shop>
+    <div id='topic'>
+        <div id='innerTopic'>
+            This is Angular 2 demo project. Author Ruslan Pedora, 
+            <a href='https://github.com/RuslanPedora/demo.shop.a2' target='_blank'>source on github</a>
+            e-mail: ruslan.pedora.gr@gmail.com
+       </div>
+       <div id='scale'>
+       </div>    
+    </div>
+</body>

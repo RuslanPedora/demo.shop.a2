@@ -1,0 +1,44 @@
+<div id='item' class='glAltLightBgColor'>	
+	<div id='imageContainer'>
+		<div id='imageDiv' *ngIf='mainImage!=""'>
+			<img id='mainImage' src='/images/{{mainImage}}'>	
+		</div>
+		<div id='imageList'>
+				<img *ngFor='let imageSrc of imageList' src='/images/{{imageSrc}}' class='smallImage glClickableCursor' (click)='changeImage(imageSrc)'>
+		</div>
+	</div>
+	<div id='itemData'>
+		<div id='buyBlock' class='glAltMediumBgColor'>
+			<div id='itemName'>{{currentItem?.name}}</div>
+			<div id='itemPrice'>				
+				{{currentItem?.discountPrice.toFixed(2)}}$
+				<ng-container *ngIf='currentItem?.discount>0'>
+					<del>({{currentItem?.price.toFixed(2)}}$)</del>
+					<br>
+					(-{{currentItem?.discount}}%)
+				</ng-container>
+			</div>
+			<button id='buyButton' class='glSmallBrRadius glClickableCursor' (click)=addItemToShoppingCart()>buy
+				<div>
+					<img src='/icons-logos/buy-cart.png' class='iconImage'>
+				</div>
+			</button>
+		</div>
+		<br>
+		<button class='navButton glClickableCursor' (click)='goBack()'>back...</button>
+		<button class='navButton glClickableCursor' (click)='goToItemList()'>item list...</button>
+		<hr>
+		<div id='itemCategory' class='glClickableCursor'
+		     (click)='goToCategory()'>
+			Category: {{currentItem?.category}}
+		</div>
+		<div id='itemPropertyList' *ngIf='propertyList.length>0'>			
+			<table>
+				<tr *ngFor='let property of propertyList'>
+					<td style='width: 30%'>{{property.name}}:</td>					
+					<td style='width: 70%'>{{property.value}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

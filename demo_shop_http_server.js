@@ -47,11 +47,11 @@ appExpress.get( "/available_properties", availablePropertiesResponse );
 
 appExpress.post( "/order", orderResponse );
 
-
-appExpress.use( '/app/images/', express.static( __dirname + '\\app\\images' ) );
+appExpress.use( '/images/', express.static( __dirname + '\\src\\images' ) );
+appExpress.use( '/icons-logos/', express.static( __dirname + '\\src\\icons-logos' ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
-appExpress.use( '/', express.static( __dirname  + '\\' ) );
-appExpress.use( express.static( __dirname ) );
+appExpress.use( '/', express.static( __dirname + '\\src' ) );
+appExpress.use( express.static( __dirname + '\\src' ) );
 
 console.log( 'static folder :' + __dirname + '\\app\\images' );
 console.log( 'basic folder :' + __dirname );
@@ -69,7 +69,7 @@ server = appExpress.listen( process.env.PORT || 8081, function() {
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
 
-    fs.readFile( __dirname + '/index.html', function ( err, html ) {
+    fs.readFile( __dirname + '/src/index.html', function ( err, html ) {
         if (err) {
             logRequest( err ); 
         }       
