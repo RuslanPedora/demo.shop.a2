@@ -47,9 +47,9 @@ appExpress.get( "/available_properties", availablePropertiesResponse );
 
 appExpress.post( "/order", orderResponse );
 
-appExpress.use( '/images/', express.static( __dirname + '\\src\\images' ) );
-appExpress.use( '/icons-logos/', express.static( __dirname + '\\src\\icons-logos' ) );
-appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
+appExpress.use( '/images/', express.static( path.join( __dirname, 'src/images' ) ) );
+appExpress.use( '/icons-logos/', express.static( path.join( __dirname, 'src/images' ) ) );
+appExpress.use( '/node_modules/', express.static( path.join( __dirname, 'node_modules' ) ) );
 appExpress.use( '/', express.static( path.join( __dirname, 'src' ) ) );
 appExpress.use( '/src', express.static( path.join( __dirname, 'src' ) ) );
 //appExpress.use( express.static( __dirname + '\\src' ) );
