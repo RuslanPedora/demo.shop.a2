@@ -59,13 +59,20 @@
 	display: block;
 	border-bottom: 1px solid rgb( 200, 200, 200 );
 }
+#panel b {
+	padding: 3px;
+	margin: 6px 3px 6px 3px;
+	display: inline-block;	
+	vertical-align: middle;
+}
 .option {
-	height: 0.7cm;
+	height: 0.6cm;
 	padding: 3px;
 	margin: 6px 3px 6px 3px;
 	border: 1px solid rgb( 200, 200, 200 );	
 	display: inline-block;
 	font-weight: bold;
+	vertical-align: middle;
 }
 .option:hover {
 	border: 1px solid rgb( 100, 100, 100 );	
@@ -128,18 +135,19 @@
 .lineImageBig {	
 	width: 0%;
 	/*max-height: 300%;		*/
-	position: relative;
+	position: absolute;
 	top: 0%;
 	left: 0%;	
-	z-index: 20;
+	z-index: -1;
 	transition: width 1s, height 1s;
 }
 .itemLineImageDiv:hover .lineImage {
 	display: none;
 }
 .itemLineImageDiv:hover .lineImageBig {
-	width: 170%;
+	width: 200%;
 	border: 1px solid rgb( 50, 50, 50);
+	z-index: 20;
 }
 .itemLineNameDiv {
 	width: 64%;

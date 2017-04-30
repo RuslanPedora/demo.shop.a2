@@ -651,11 +651,13 @@ function constructSQLCondition( queryString, mask ) {
 function convertToSQLValue( propertyValue, propertryName ) {
   if( typeof propertyValue == 'number' ) 
       return propertyValue;
-  if( typeof propertyValue == 'string' ) 
-    if( propertryName.indexOf( 'name' ) >= 0 )
-      return '\'%' + propertyValue + '%\''; 
+  if( typeof propertyValue == 'string' ) {
+    propertyValue = propertyValue.replace( /%20/g, ' ' );     
+    if( propertryName.indexOf( 'name' ) >= 0 ) 
+      return '\'%' + propertyValue + '%\'';     
     else  
       return '\'' + propertyValue + '\''; 
+  }  
   else  
       return '\'' + propertyValue + '\''; 
 }

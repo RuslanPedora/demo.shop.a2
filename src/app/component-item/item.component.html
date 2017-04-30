@@ -3,7 +3,7 @@
 		<div id='imageDiv' *ngIf='mainImage!=""'>
 			<img id='mainImage' src='/images/{{mainImage}}'>	
 		</div>
-		<div id='imageList'>
+		<div id='imageList' *ngIf='imageList.length>1'>
 				<img *ngFor='let imageSrc of imageList' src='/images/{{imageSrc}}' class='smallImage glClickableCursor' (click)='changeImage(imageSrc)'>
 		</div>
 	</div>

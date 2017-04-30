@@ -2,30 +2,36 @@
 	<div id='panelContainer'>
 		<img id='drilldownPointer' src='/icons-logos/panel.ico'>
 		<div id='panel' class='glAltLightBgColor'>
+			<b>Name:</b>
 			<div class='option glClickableCursor glSmallBrRadius' 
 				 [ngClass]="{'glColorSelected':sortedByNameAsc}"
-			     (click)='sortByNameAsc()'>Name ⇧
+			     (click)='sortByNameAsc()'>
+			     <img src='/icons-logos/asc-order.png' class='iconImage'>
 			</div>
 			<div class='option glClickableCursor glSmallBrRadius' 
 			     [ngClass]="{'glColorSelected':sortedByNameDes}"
-			     (click)='sortByNameDes()'>Name ⇩
+			     (click)='sortByNameDes()'>
+			     <img src='/icons-logos/des-order.png' class='iconImage'>
 			</div>
+			<b>Price:</b>
 			<div class='option glClickableCursor glSmallBrRadius' 
 				 [ngClass]="{'glColorSelected':sortedByPriceAsc}"
-			     (click)='sortByPriceAsc()'>Price ⇧
+			     (click)='sortByPriceAsc()'>			     
+			     <img src='/icons-logos/asc-order.png' class='iconImage'>			     
 			</div>
 			<div class='option glClickableCursor glSmallBrRadius' 
 			     [ngClass]="{'glColorSelected':sortedByPriceDes}"
-			     (click)='sortByPriceDes()'>Price ⇩
+			     (click)='sortByPriceDes()'>
+			     <img src='/icons-logos/des-order.png' class='iconImage'>
 			</div>
 			<ng-container *ngIf='showListOption'>
 				<div class='option locRightFloat glClickableCursor glSmallBrRadius' 
 				     [ngClass]="{'glColorSelected':shownAsList}"
-				     (click)='showAsList(true)'><img src='/icons-logos/menu.png' class='iconImage'>
+				     (click)='showAsList(true)'><img src='/icons-logos/layout-list.png' class='iconImage'>
 				</div>
 				<div class='option locRightFloat glClickableCursor glSmallBrRadius' 
 					 [ngClass]="{'glColorSelected':!shownAsList}"
-				     (click)='showAsList(false)'><img src='/icons-logos/layout.png' class='iconImage'>
+				     (click)='showAsList(false)'><img src='/icons-logos/layout-tile.png' class='iconImage'>
 			    </div>
 				<div class='option locRightFloat glClickableCursor glSmallBrRadius'>
 					<label>Item on page: </label>
