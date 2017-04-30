@@ -5,6 +5,7 @@
 /typings
 /typings/*
 
+/index.html
 /karma.conf.js
 /karma-test-shim.js
 /npm-debug.log
