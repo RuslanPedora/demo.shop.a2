@@ -51,20 +51,17 @@ appExpress.use( '/images/', express.static( __dirname + '\\src\\images' ) );
 appExpress.use( '/icons-logos/', express.static( __dirname + '\\src\\icons-logos' ) );
 appExpress.use( '/node_modules/', express.static( __dirname + '\\node_modules' ) );
 appExpress.use( '/', express.static( __dirname + '\\src' ) );
-appExpress.use( express.static( __dirname + '\\src' ) );
+//appExpress.use( express.static( __dirname + '\\src' ) );
 
-console.log( 'static folder :' + __dirname + '\\app\\images' );
+console.log( 'static folder images:' + __dirname + '\\src\\images' );
+console.log( 'static folder icons-logos:' + __dirname + '\\src\\icons-logos' );
 console.log( 'basic folder :' + __dirname );
 console.log( 'heroku port: ' + process.env.PORT );
-
-if ( fs.existsSync( __dirname + '/index.html' ) ) {
-    console.log( 'index.html exists' );
-}
 
 server = appExpress.listen( process.env.PORT || 8081, function() {
     var host = server.address().address;
     var port = server.address().port;
-    console.log( "Server has been started: " + host + "-" + port );
+    console.log( "Server has been started: " + host + " - " + port );
 });
 //-----------------------------------------------------------------------------
 function initResponse( request, response ) {
