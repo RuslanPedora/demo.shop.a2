@@ -5,14 +5,14 @@
 /typings
 /typings/*
 
-karma.conf.js
-karma-test-shim.js
-npm-debug.log
-protractor.config.js
-tsconfig.json
-tslint.json
-typings.json
-wallaby.js
+/karma.conf.js
+/karma-test-shim.js
+/npm-debug.log
+/protractor.config.js
+/tsconfig.json
+/tslint.json
+/typings.json
+/wallaby.js
 
 /src/images/*
 /src/app/*.js
