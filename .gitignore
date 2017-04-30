@@ -15,8 +15,6 @@
 /typings.json
 /wallaby.js
 
-/src/images/*
-/src/app/*.js
+
 /src/app/*.map
-/src/app/**/*.js
 /src/app/**/*.map

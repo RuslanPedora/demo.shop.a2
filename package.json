@@ -1,7 +1,7 @@
 {
   "name": "angular2-demo-shop",
   "version": "1.0.0",
-  "description": "QuickStart package.json from the documentation, supplemented with testing support",
+  "description": "This is angular 2 pet project with node js back-end part and MySQL DBMS",
   "keywords": [],
   "author": "Ruslan Pedora",
   "license": "ISC",
